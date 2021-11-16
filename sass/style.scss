@@ -1,4 +1,10 @@
-//test
+$primary-color: #0D0C1D;
+$secundary-color: #F1DAC4;
+$links-color: #474973;
+$btn-color: #A69CAC;
+$bg-color: #161B33;
+
 body {
-    background: rgb(0, 0, 0);
+    background: $bg-color;
+    color: $secundary-color;
 }
