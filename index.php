@@ -6,10 +6,6 @@ session_start();
 
 const BR = '<br> <br>';
 
-// Create connection to database
-$pdo = new \PDO(DSN, USER, PASS, [
-    PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC
-]);
 ?>
 
 <html lang="en">
@@ -43,6 +39,6 @@ $events = $statement->fetchAll();
 
 <ul>
     <?php foreach($events as $event): ?>
-    <li><?php echo $event['name'] . ' ' . $event['description']; ?></li>
+    <li><?php echo $event['name'] . ' : ' . $event['description']; ?></li>
     <?php endforeach ?>
 </ul>
