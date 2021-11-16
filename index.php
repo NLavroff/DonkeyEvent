@@ -34,8 +34,6 @@ $pdo = new \PDO(DSN, USER, PASS, [
 </html>
 
 <?php
-$errors = [];
-$firstname = $lastname = "";
 
 $query = "SELECT * FROM Event";
 $statement = $pdo->query($query);
