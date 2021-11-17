@@ -7,10 +7,6 @@ session_start();
 
 const BR = '<br> <br>';
 
-// Create connection to database
-$pdo = new \PDO(DSN, USER, PASS, [
-    PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC
-]);
 ?>
 
 <?php
