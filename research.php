@@ -12,9 +12,9 @@ $_SESSION["cart"] = [];
 ?>
 
 <h1>Recherche</h1>
-<form>
+<form action="" method="get">
     <label for="search">Je souhaite réserver</label><br><br>
-    <input type="textarea" value="Céline Dion"><br><br>
+    <input type="text" name="search" value="Céline Dion"><br><br>
     <input type="submit" value="Rechercher"><br><br>
 </form>
 
@@ -52,7 +52,7 @@ tr:nth-child(even) {
     </tr>
 
 <?php
-
+$search = $_GET["search"];
 $query = "
     SELECT Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price 
     FROM Session 
@@ -62,7 +62,7 @@ $query = "
         JOIN Performance 
             JOIN Artist ON Artist_idArtist = idArtist 
             JOIN Genre ON Genre_idGenre = idGenre
-    HAVING event = 'Marseille' or genre = 'Marseille' or artist = 'Marseille' or venue = 'Marseille' or city = 'Marseille'
+    HAVING INSTR(event,'$search') or INSTR(genre,'$search') or INSTR(artist,'$search') or INSTR(venue,'$search') or INSTR(city,'$search')
 ";
 $statement = $pdo->query($query);
 $events = $statement->fetchAll();
@@ -89,7 +89,7 @@ if ($statement->rowCount() > 0) {
         </tr>
     <?php endforeach ?>
 <?php } else { ?>
-<span>Nous n'avons pas trouvé d'évènement correspondant à votre recherche</span>
+<span>Nous n'avons pas trouvé d'évènement correspondant à votre recherche : <?php echo $search; ?></span>
 <?php } ?>
 </table>
 <br>
