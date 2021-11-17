@@ -7,8 +7,6 @@ session_start();
 
 const BR = '<br> <br>';
 
-$pdo = new \PDO(DSN, USER, PASS);
-
 $query = "SELECT * FROM Event";
 $statement = $pdo->query($query);
 $events = $statement->fetchAll();
@@ -39,21 +37,26 @@ $sessions = $statement->fetchAll();
 ?>
 
 <table>
-<tr>
-    <th>Nom</th>
-    <th>Tarif</th>
-    <th>Date</th>
-    <th>Ville</th>
-    <th>Salle</th>
-</tr>
-<tr>
+    <tr>
+        <th>Nom</th>
+        <th>Tarif</th>
+        <th>Date</th>
+        <th>Ville</th>
+        <th>Salle</th>
+        <th>Réserver</th>
+    </tr>
+
+    <tr>
 <?php
-foreach ($sessions as $session) { ?>
-    <td><?php echo $session['event']; ?></td>
-    <td><?php echo $session['price']; ?></td>
-    <td><?php echo $session['date']; ?></td>
-    <td><?php echo $session['city']; ?></td>
-    <td><?php echo $session['venue']; ?></td>
-</tr>
+    foreach ($sessions as $session) { ?>
+        <td><?php echo $session['event']; ?></td>
+        <td><?php echo $session['price']; ?></td>
+        <td><?php echo $session['date']; ?></td>
+        <td><?php echo $session['city']; ?></td>
+        <td><?php echo $session['venue']; ?></td>
+        <td> <form method="POST" action="cart.php" name="cart">
+                <button type="submit">Ajouter au panier</button>
+            </form></td>
+    </tr>
 <?php } ?>
 </table>
