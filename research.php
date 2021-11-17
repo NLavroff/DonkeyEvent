@@ -53,7 +53,17 @@ tr:nth-child(even) {
 
 <?php
 
-$query = "SELECT Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price FROM Session JOIN Event ON Event_idEvent = idEvent JOIN Venue ON Venue_idVenue = idVenue JOIN City ON City_idCity = idCity JOIN Performance JOIN Artist ON Artist_idArtist = idArtist JOIN Genre ON Genre_idGenre = idGenre";
+$query = "
+    SELECT Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price 
+    FROM Session 
+        JOIN Event ON Event_idEvent = idEvent 
+        JOIN Venue ON Venue_idVenue = idVenue 
+            JOIN City ON City_idCity = idCity 
+        JOIN Performance 
+            JOIN Artist ON Artist_idArtist = idArtist 
+            JOIN Genre ON Genre_idGenre = idGenre
+    HAVING event = 'Marseille' or genre = 'Marseille' or artist = 'Marseille' or venue = 'Marseille' or city = 'Marseille'
+";
 $statement = $pdo->query($query);
 $events = $statement->fetchAll();
 
@@ -78,7 +88,8 @@ if ($statement->rowCount() > 0) {
             </td>
         </tr>
     <?php endforeach ?>
-    <?php }
-?>
+<?php } else { ?>
+<span>Nous n'avons pas trouvé d'évènement correspondant à votre recherche</span>
+<?php } ?>
 </table>
 <br>
