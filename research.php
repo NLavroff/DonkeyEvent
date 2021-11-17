@@ -8,32 +8,24 @@ session_start();
 const BR = '<br> <br>';
 
 $_SESSION["cart"] = [];
-$currentDay = date("d");
-$currentMonth = date("m");
-$currentYear = date("Y");
-$currentDate = $currentYear . "-" . $currentMonth . "-" . $currentDay;
-var_dump($currentDate);
 
 ?>
 
 <h1>Recherche</h1>
 <form action="" method="get">
     <label for="search">Je souhaite réserver : </label>
-    <input type="text" name="search" placeholder="Céline Dion">
+    <input type="text" name="search" placeholder="Céline Dion" value=<?php if (isset($_GET["search"])) { echo $_GET["search"]; } ?>>
     <label for="search">le : </label>
-    <input type="date" name="searchDate" value="<?php echo $currentDate ?>">
+    <input type="date" name="searchDate" value=<?php if (isset($_GET["searchDate"])) { echo $_GET["searchDate"]; } ?>>
     <label for="searchPrice">Prix maximum par place : </label>
     <select name="searchPrice">
         <option value=100>100 €</option>
         <option value=50>50 €</option>
         <option value=20>20 €</option>
+        <option value=5>5 €</option>
     </select>
     <input type="submit" value="Rechercher"><br><br>
 </form>
-
-<?php
-var_dump($_GET);
-?>
 
 <style>
 body {
@@ -73,25 +65,39 @@ tr:nth-child(even) {
     </tr>
 
 <?php
+
 $search = $_GET["search"];
 $price = $_GET["searchPrice"];
 $date = $_GET["searchDate"];
-echo $search;
-echo $price;
-echo $date;
-$query = "
-    SELECT Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price 
-    FROM Session 
-        JOIN Event ON Event_idEvent = idEvent 
-        JOIN Venue ON Venue_idVenue = idVenue 
-            JOIN City ON City_idCity = idCity 
-        JOIN Performance 
-            JOIN Artist ON Artist_idArtist = idArtist 
-            JOIN Genre ON Genre_idGenre = idGenre
-    HAVING INSTR(event,'$search') or INSTR(genre,'$search') or INSTR(artist,'$search') or INSTR(venue,'$search') or INSTR(city,'$search')
-    and price <= '$price'
-    and date = '$date'
-";
+
+if (!$date) {
+    $query = "
+        SELECT Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price 
+        FROM Session 
+            JOIN Event ON Event_idEvent = idEvent 
+            JOIN Venue ON Venue_idVenue = idVenue 
+                JOIN City ON City_idCity = idCity 
+            JOIN Performance 
+                JOIN Artist ON Artist_idArtist = idArtist 
+                JOIN Genre ON Genre_idGenre = idGenre
+        WHERE price <= '$price'
+        HAVING INSTR(event,'$search') OR INSTR(genre,'$search') OR INSTR(artist,'$search') OR INSTR(venue,'$search') OR INSTR(city,'$search')
+    ";
+} else {
+    $query = "
+        SELECT Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price 
+        FROM Session 
+            JOIN Event ON Event_idEvent = idEvent 
+            JOIN Venue ON Venue_idVenue = idVenue 
+                JOIN City ON City_idCity = idCity 
+            JOIN Performance 
+                JOIN Artist ON Artist_idArtist = idArtist 
+                JOIN Genre ON Genre_idGenre = idGenre
+        WHERE price <= '$price' AND DATE(date) = '$date'
+        HAVING INSTR(event,'$search') OR INSTR(genre,'$search') OR INSTR(artist,'$search') OR INSTR(venue,'$search') OR INSTR(city,'$search')
+    ";
+}
+
 $statement = $pdo->query($query);
 $events = $statement->fetchAll();
 
@@ -117,7 +123,7 @@ if ($statement->rowCount() > 0) {
         </tr>
     <?php endforeach ?>
 <?php } else { ?>
-<span>Nous n'avons pas trouvé d'évènement correspondant à votre recherche : <?php echo $search; ?></span>
+<span>Nous n'avons pas trouvé d'évènement correspondant à votre recherche</span>
 <?php } ?>
 </table>
 <br>
