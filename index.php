@@ -14,7 +14,6 @@ const BR = '<br> <br>';
 $query = "SELECT * FROM Event";
 $statement = $pdo->query($query);
 $events = $statement->fetchAll(); 
-
 ?>
 
 <ul>
@@ -24,5 +23,5 @@ $events = $statement->fetchAll();
     <li><?php echo $event['name'] . BR . $event['description']; ?></li>
     <button type="submit">En savoir plus</button>
     <?php endforeach ?>
-</ul>
 </form>
+</ul>
