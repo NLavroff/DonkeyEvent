@@ -66,7 +66,7 @@ tr:nth-child(even) {
 
 <?php
 
-$search = $_GET["search"];
+$search = trim($_GET["search"]);
 $price = $_GET["searchPrice"];
 $date = $_GET["searchDate"];
 
@@ -81,7 +81,7 @@ if (!$date) {
                 JOIN Artist ON Artist_idArtist = idArtist 
                 JOIN Genre ON Genre_idGenre = idGenre
         WHERE price <= '$price'
-        HAVING INSTR(event,'$search') OR INSTR(genre,'$search') OR INSTR(artist,'$search') OR INSTR(venue,'$search') OR INSTR(city,'$search')
+        HAVING INSTR(event, :search) OR INSTR(genre, :search) OR INSTR(artist, :search) OR INSTR(venue, :search) OR INSTR(city, :search)
     ";
 } else {
     $query = "
@@ -94,11 +94,13 @@ if (!$date) {
                 JOIN Artist ON Artist_idArtist = idArtist 
                 JOIN Genre ON Genre_idGenre = idGenre
         WHERE price <= '$price' AND DATE(date) = '$date'
-        HAVING INSTR(event,'$search') OR INSTR(genre,'$search') OR INSTR(artist,'$search') OR INSTR(venue,'$search') OR INSTR(city,'$search')
+        HAVING INSTR(event, :search) OR INSTR(genre, :search) OR INSTR(artist, :search) OR INSTR(venue, :search) OR INSTR(city, :search)
     ";
 }
 
-$statement = $pdo->query($query);
+$statement = $pdo->prepare($query);
+$statement->bindValue(':search', $search, \PDO::PARAM_STR);
+$statement->execute();
 $events = $statement->fetchAll();
 
 if ($statement->rowCount() > 0) {
