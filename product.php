@@ -6,13 +6,10 @@ require_once 'index.html';
 session_start();
 
 const BR = '<br> <br>';
-
-$query = "SELECT * FROM Event";
+$idEvent = $_GET['idEvent'];
+$query = "SELECT * FROM Event WHERE idEvent =" . $idEvent;
 $statement = $pdo->query($query);
 $events = $statement->fetchAll();
-
-$idEvent = $_GET['idEvent'];
-
 $query = $query . "WHERE idEvent=" . $idEvent;
 
 ?>
@@ -32,7 +29,10 @@ $query = $query . "WHERE idEvent=" . $idEvent;
 </table>
 
 <?php
-$query = "SELECT Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price, idSession FROM Session JOIN Event ON Event_idEvent = idEvent JOIN Venue ON Venue_idVenue = idVenue JOIN City ON City_idCity = idCity JOIN Performance JOIN Artist ON Artist_idArtist = idArtist JOIN Genre ON Genre_idGenre = idGenre";
+$query = "SELECT Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price, idSession 
+FROM Session 
+JOIN Event ON Event_idEvent = idEvent JOIN Venue ON Venue_idVenue = idVenue JOIN City ON City_idCity = idCity JOIN Performance ON Performance.Event_idEvent = idEvent JOIN Artist ON Artist_idArtist = idArtist JOIN Genre ON Genre_idGenre = idGenre
+WHERE idEvent =" . $idEvent;
 $statement = $pdo->query($query);
 $sessions = $statement->fetchAll();
 ?>
@@ -57,7 +57,7 @@ $sessions = $statement->fetchAll();
         <td><?php echo $session['city']; ?></td>
         <td><?php echo $session['venue']; ?></td>
         <td><?php echo $session['price']; ?>€</td>
-        <td> <form method="GET" action="cart.php" name="cart">
+        <td> <form method="POST" action="cart.php" name="cart">
                 <input type="hidden" name="idSession" value="<?php echo $session["idSession"]; ?>" />
                 <button type="submit">Ajouter au panier</button>
             </form></td>
