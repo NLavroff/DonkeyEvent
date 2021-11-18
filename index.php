@@ -1,6 +1,7 @@
 <?php
 
 require_once 'connec.php';
+require_once 'header.php';
 
 session_start();
 
