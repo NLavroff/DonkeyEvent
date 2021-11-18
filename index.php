@@ -18,11 +18,11 @@ $events = $statement->fetchAll();
 ?>
 
 <ul>
-<form method="GET" action="product.php" name="product">
     <?php foreach($events as $event): ?>
-        <input type="hidden" name="idEvent" value="<?php echo $event["idEvent"]; ?>" />
-    <li><?php echo $event['name'] . BR . $event['description']; ?></li>
-    <button type="submit">En savoir plus</button>
+        <form method="GET" action="product.php" name="product">
+            <input type="hidden" name="idEvent" value="<?php echo $event["idEvent"]; ?>" />
+            <li><?php echo $event['name'] . BR . $event['description']; ?></li>
+            <button type="submit">En savoir plus</button>
+        </form>
     <?php endforeach ?>
-</form>
 </ul>
