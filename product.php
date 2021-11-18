@@ -37,7 +37,15 @@ $query = $query . "WHERE idEvent=" . $idEvent;
 <br><br><br>
 
 <?php
-$query = "SELECT Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price, idSession FROM Session JOIN Event ON Event_idEvent = idEvent JOIN Venue ON Venue_idVenue = idVenue JOIN City ON City_idCity = idCity JOIN Performance JOIN Artist ON Artist_idArtist = idArtist JOIN Genre ON Genre_idGenre = idGenre";
+$query = "
+    SELECT capacity, Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price, idSession
+    FROM Session
+        JOIN Event ON Event_idEvent = idEvent
+        JOIN Venue ON Venue_idVenue = idVenue
+            JOIN City ON City_idCity = idCity
+        JOIN Performance
+            JOIN Artist ON Artist_idArtist = idArtist
+            JOIN Genre ON Genre_idGenre = idGenre";
 $statement = $pdo->query($query);
 $sessions = $statement->fetchAll();
 ?>
@@ -65,11 +73,11 @@ $sessions = $statement->fetchAll();
         <td> <form method="GET" action="cart.php" name="cart">
                 <label for="nbTickets">Nombre de places : </label>
                 <select name="nbTickets">
-                    <option value=1>1</option>
-                    <option value=2>2</option>
-                    <option value=3>3</option>
-                    <option value=4>4</option>
-                    <option value=5>5</option>
+                    <?php
+                    $capacity = (int) $session['capacity'];
+                    for($i=1; $i<=$capacity; $i++) { ?>
+                    <option value=<?php echo $i ?>><?php echo $i ?></option>
+                    <?php } ?>
                 </select>
                 <input type="hidden" name="idSession" value="<?php echo $session["idSession"]; ?>" />
                 <button type="submit">Ajouter au panier</button>
