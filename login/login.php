@@ -2,8 +2,7 @@
 require_once '../connec.php';
 session_start();
 
-if (isset($_POST['user_login']))
-{
+if (isset($_POST['user_login'])){
     $userLogin = trim($_POST['user_login']);
     $userPassword = trim($_POST['user_password']);
     
@@ -18,12 +17,10 @@ if (isset($_POST['user_login']))
     $count = $statement->rowCount();
     $row = $statement->fetch(PDO::FETCH_ASSOC);
 
-    if($count == 1 && !empty($row))
-    {
+    if($count == 1 && !empty($row)){
         $_SESSION['user_login'] = $userLogin;
         header ('location: ../index.php');    
-    }else
-    {
+    } else {
         echo "Votre identifiant ou votre mot de passe est incorrect.";
     }
 }
