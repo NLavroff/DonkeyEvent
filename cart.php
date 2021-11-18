@@ -4,7 +4,9 @@ require_once 'connec.php';
 require_once 'index.html';
 
 session_start();
-$_SESSION['cartItems'] = [];
+if (empty($_SESSION['cartItems'])) {
+    $_SESSION['cartItems'] = [];
+}
 const BR = '<br> <br>';
 ?>
 
@@ -18,20 +20,11 @@ if (!empty($_POST)) {
     if (!empty($idSession)) {
         $query = "SELECT Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price, idSession 
         FROM Session 
-        JOIN Event ON Event_idEvent = idEvent JOIN Venue ON Venue_idVenue = idVenue JOIN City ON City_idCity = idCity JOIN Performance JOIN Artist ON Artist_idArtist = idArtist JOIN Genre ON Genre_idGenre = idGenre 
+        JOIN Event ON Event_idEvent = idEvent JOIN Venue ON Venue_idVenue = idVenue JOIN City ON City_idCity = idCity JOIN Performance ON Performance.Event_idEvent = idEvent JOIN Artist ON Artist_idArtist = idArtist JOIN Genre ON Genre_idGenre = idGenre 
         WHERE idSession =" . $idSession;
         $statement = $pdo->query($query);
 
-        if (empty($_SESSION['cartItems'])) {
-            echo "we are here";
-            $_SESSION['cartItems'] = $statement->fetchAll(PDO::FETCH_ASSOC);
-        } else {
-            echo "we are here 2";
-            $_SESSION['cartItems'] = array_merge($_SESSION['cartItems'], $statement->fetchAll(PDO::FETCH_ASSOC));
-        }
-
-        var_dump($_SESSION['cartItems']);
-        echo count($_SESSION['cartItems']);
+        $_SESSION['cartItems'] = array_merge($_SESSION['cartItems'], $statement->fetchAll(PDO::FETCH_ASSOC));
     }
 }
 
@@ -50,7 +43,6 @@ if (isset($_SESSION['cartItems'])) { ?>
         <th>Total</th>
     </tr>
         <?php
-        var_dump($_SESSION['cartItems']);
         for ($i = 0; $i < count($_SESSION['cartItems']); $i++) { 
             ?>
             <tr>
