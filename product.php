@@ -7,13 +7,10 @@ require_once 'index.html';
 session_start();
 
 const BR = '<br> <br>';
-
-$query = "SELECT * FROM Event";
+$idEvent = $_GET['idEvent'];
+$query = "SELECT * FROM Event WHERE idEvent =" . $idEvent;
 $statement = $pdo->query($query);
 $events = $statement->fetchAll();
-
-$idEvent = $_GET['idEvent'];
-
 $query = $query . "WHERE idEvent=" . $idEvent;
 
 ?>
@@ -41,11 +38,12 @@ $query = "
     SELECT capacity, Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price, idSession
     FROM Session
         JOIN Event ON Event_idEvent = idEvent
+            JOIN Performance ON Performance.Event_idEvent = idEvent
+                JOIN Artist ON Artist_idArtist = idArtist
+                JOIN Genre ON Genre_idGenre = idGenre
         JOIN Venue ON Venue_idVenue = idVenue
             JOIN City ON City_idCity = idCity
-        JOIN Performance
-            JOIN Artist ON Artist_idArtist = idArtist
-            JOIN Genre ON Genre_idGenre = idGenre";
+    WHERE idEvent =" . $idEvent;
 $statement = $pdo->query($query);
 $sessions = $statement->fetchAll();
 ?>
