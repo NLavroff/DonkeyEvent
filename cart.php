@@ -8,12 +8,11 @@ if (empty($_SESSION['cartItems'])) {
     $_SESSION['cartItems'] = [];
 }
 const BR = '<br> <br>';
+
 ?>
 
 <h1>Mon panier</h1> <br>
 <?php
-
-var_dump($_GET);
 
 if (!empty($_GET)) {
     

@@ -25,12 +25,8 @@ ORDER BY date
 
 $statement = $pdo->query($query);
 $reservations = $statement->fetchAll();
-
-$currentDay = date("d");
-$currentMonth = date("m");
-$currentYear = date("Y");
-$currentDate = $currentYear . "-" . $currentMonth . "-" . $currentDay;
-
+date_default_timezone_set('Europe/Paris');
+$currentDate = date("Y-m-d H:i:s");
 
 ?>
 
