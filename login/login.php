@@ -5,12 +5,11 @@ session_start();
   
 const BR = '<br> <br>';
 
-
 if (isset($_POST['user_login'])){
     $userLogin = trim($_POST['user_login']);
     $userPassword = trim($_POST['user_password']);
     
-    $query = "SELECT * FROM user WHERE user.Name = :login";
+    $query = "SELECT * FROM User WHERE User.Name = :login";
 
     $statement = $pdo ->prepare($query);
 
@@ -20,7 +19,7 @@ if (isset($_POST['user_login'])){
     $count = $statement->rowCount();
     $row = $statement->fetch(PDO::FETCH_ASSOC);
 
-    if(password_verify($userPassword,$row['Password'])){
+    if(password_verify($userPassword,$row['Password'])) {
         $_SESSION['user_login'] = $userLogin;
         header ('location: ../index.php');    
     } else {
