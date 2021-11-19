@@ -27,3 +27,8 @@ $events = $statement->fetchAll();
         </form>
     <?php endforeach ?>
 </ul>
+
+<?php
+require_once 'footer.php';
+?>
+
