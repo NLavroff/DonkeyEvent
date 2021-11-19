@@ -68,7 +68,7 @@ $sessions = $statement->fetchAll();
         <td><?php echo $session['city']; ?></td>
         <td><?php echo $session['venue']; ?></td>
         <td><?php echo $session['price']; ?>€</td>
-        <td> <form method="GET" action="cart.php" name="cart">
+        <td><form method="GET" action="cart.php" name="cart">
                 <label for="nbTickets">Nombre de places : </label>
                 <select name="nbTickets">
                     <?php

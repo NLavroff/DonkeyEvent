@@ -36,8 +36,6 @@ $search = trim($_GET["search"]);
 $price = filter_var($_GET["searchPrice"], FILTER_SANITIZE_NUMBER_INT);
 $date = trim($_GET["searchDate"]);
 
-echo $price;
-
 if (!$date) {
     $query = "
         SELECT Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price 

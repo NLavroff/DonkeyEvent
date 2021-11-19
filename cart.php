@@ -13,9 +13,11 @@ const BR = '<br> <br>';
 <h1>Mon panier</h1> <br>
 <?php
 
-if (!empty($_POST)) {
+var_dump($_GET);
+
+if (!empty($_GET)) {
     
-    $idSession = $_POST['idSession'];
+    $idSession = $_GET['idSession'];
   
     if (!empty($idSession)) {
         $query = "SELECT Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price, idSession 
