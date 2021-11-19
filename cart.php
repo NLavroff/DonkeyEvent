@@ -8,6 +8,7 @@ if (empty($_SESSION['cartItems'])) {
     $_SESSION['cartItems'] = [];
 }
 const BR = '<br> <br>';
+
 ?>
 
 <h1>Mon panier</h1> <br>

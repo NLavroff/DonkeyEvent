@@ -39,10 +39,10 @@ tr:nth-child(even) {
     <input type="date" name="searchDate" value=<?php if (isset($_GET["searchDate"])) { echo $_GET["searchDate"]; } ?>>
     <label for="searchPrice">Prix maximum par place : </label>
     <select name="searchPrice">
-        <option value=100>100 €</option>
-        <option value=50>50 €</option>
-        <option value=20>20 €</option>
-        <option value=5>5 €</option>
+      <option value=100>100 €</option>
+      <option value=50>50 €</option>
+      <option value=20>20 €</option>
+      <option value=5>5 €</option>
     </select>
     <input type="submit" value="Rechercher"><br><br>
 </form>
