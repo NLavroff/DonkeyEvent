@@ -13,9 +13,9 @@ const BR = '<br> <br>';
 <h1>Mon panier</h1> <br>
 <?php
 
-if (!empty($_POST)) {
+if (!empty($_GET)) {
     
-    $idSession = $_POST['idSession'];
+    $idSession = $_GET['idSession'];
   
     if (!empty($idSession)) {
         $query = "SELECT Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price, idSession 
@@ -42,18 +42,17 @@ if (isset($_SESSION['cartItems'])) { ?>
         <th>Ajouter l'assurance annulation</th>
         <th>Total</th>
     </tr>
-        <?php
-        for ($i = 0; $i < count($_SESSION['cartItems']); $i++) { 
-            ?>
+        <?php 
+        for($i = 0; $i < count($_SESSION['cartItems']); $i++) { ?>
             <tr>
                 <td><?php echo $_SESSION['cartItems'][$i]['event']; ?></td>
                 <td><?php echo $_SESSION['cartItems'][$i]['genre']; ?></td>
                 <td><?php echo $_SESSION['cartItems'][$i]['date']; ?></td>
                 <td><?php echo $_SESSION['cartItems'][$i]['city']; ?></td>
                 <td><?php echo $_SESSION['cartItems'][$i]['venue']; ?></td>
-                <td><?php echo $_SESSION['cartItems'][$i]['price']; ?></td>
+                <td><?php echo $_SESSION['cartItems'][$i]['price'] .'€'; ?></td>
             </tr>
-    <?php } 
+    <?php }
     } else {
             echo "<br>Votre panier est vide !";
         } ?>
