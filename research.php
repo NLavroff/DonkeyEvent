@@ -5,7 +5,7 @@ require_once 'index.html';
 require_once 'header.php';
 
 ?>
-
+<!-- A bit of style, to be removed when we develop the CSS part of the project -->
 <style>
 body {
   color: #A69CAC;
@@ -30,11 +30,11 @@ tr:nth-child(even) {
 }
 </style>
 
-
+<!-- A simple form to know what the user is looking for -->
 <h1>Recherche</h1>
 <form action="searchResult.php" method="get" autocomplete="on">
     <label for="search">Je souhaite réserver : </label>
-    <input type="text" name="search" placeholder="Céline Dion" value=<?php if (isset($_GET["search"])) { echo $_GET["search"]; } ?>>
+    <input type="text" name="search" placeholder="Artiste/Salle/Ville" value=<?php if (isset($_GET["search"])) { echo $_GET["search"]; } ?>>
     <label for="search">le : </label>
     <input type="date" name="searchDate" value=<?php if (isset($_GET["searchDate"])) { echo $_GET["searchDate"]; } ?>>
     <label for="searchPrice">Prix maximum par place : </label>

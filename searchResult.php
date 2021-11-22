@@ -10,10 +10,8 @@ session_start();
 const BR = '<br> <br>';
 
 $_SESSION["cart"] = [];
-$currentDay = date("d");
-$currentMonth = date("m");
-$currentYear = date("Y");
-$currentDate = $currentYear . "-" . $currentMonth . "-" . $currentDay;
+date_default_timezone_set('Europe/Paris');
+$currentDate = date("Y-m-d H:i:s");
 
 ?>
 
