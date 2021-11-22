@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 $primary-color: #0D0C1D;
 $secundary-color: #F1DAC4;
 $links-color: #474973;
 $btn-color: #A69CAC;
 $bg-color: #161B33;
+$font-family: 'Roboto', sans-serif;
 
 body, h1 {
+	font-family: $font-family;
     background: $bg-color;
     color: $secundary-color;
 	margin-top: 20px;
