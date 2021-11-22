@@ -7,20 +7,18 @@ if (isset($_POST['user_login'])){
     $userLogin = trim($_POST['user_login']);
     $userPassword = trim($_POST['user_password']);
     
-    $query = "SELECT * FROM user WHERE user.Name = :login AND user.Password = :password";
+    $query = "SELECT * FROM user WHERE user.Name = :login";
 
     $statement = $pdo ->prepare($query);
 
     $statement->bindValue(':login', $userLogin, PDO::PARAM_STR);
-    $statement->bindValue(':password', $userPassword, PDO::PARAM_STR);
     $statement->execute();
 
-    $count = $statement->rowCount();
     $row = $statement->fetch(PDO::FETCH_ASSOC);
 
-    if($count == 1 && !empty($row)){
-        $_SESSION['user_login'] = $userLogin;
-        header ('location: index.php');    
+    if(password_verify($userPassword,$row["Password"])) {
+        $_SESSION["user_login"] = $userLogin;
+        header ("location: index.php");
     } else {
         echo "Votre identifiant ou votre mot de passe est incorrect.";
     }
@@ -32,7 +30,8 @@ if (isset($_POST['user_login'])){
 <div class="container login_card ">
 <div class="card" style="width: 20rem;">
   <img src="medias/login.jpg" class="card-img-top" alt="crowd in concert">
-  <div class="card_body"><form action="login.php" method="post">
+  <div class="card_body">
+    <form action="login.php" method="post">
             <div class="col-sm-12">
                 <input type="text" id="login" name="user_login" placeholder="Identifiant">
             </div>
