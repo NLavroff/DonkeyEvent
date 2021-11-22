@@ -7,7 +7,7 @@ if (isset($_POST['user_login'])){
     $userLogin = trim($_POST['user_login']);
     $userPassword = trim($_POST['user_password']);
     
-    $query = "SELECT * FROM user WHERE user.Name = :login";
+    $query = "SELECT * FROM User WHERE User.Name = :login";
 
     $statement = $pdo ->prepare($query);
 
