@@ -10,6 +10,11 @@ if (empty($_SESSION['cartItems'])) {
 const BR = '<br> <br>';
 ?>
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> f2674ed6d220ff0f5d47a241b2b3eaafadfc5660
 <?php
 if (!empty($_GET)) {
     
@@ -28,7 +33,11 @@ if (!empty($_GET)) {
 
 if (isset($_SESSION['cartItems'])) { ?>
 <div class="container-fluid">
+<<<<<<< HEAD
 <h1>MON PANIER</h1>
+=======
+<h1>Mon panier</h1>
+>>>>>>> f2674ed6d220ff0f5d47a241b2b3eaafadfc5660
     <div class="row">
         <aside class="col-lg-9">
             <div class="card">
@@ -82,15 +91,23 @@ if (isset($_SESSION['cartItems'])) { ?>
             <div class="card-body">
                 <dl class="dlist-align">
                     <dt>Total:</dt>
+<<<<<<< HEAD
                         <dd class="text-right text-dark b ml-3"><strong>
                             <?php
                             echo $_SESSION['cartItems'][$i]['price'] .'€'; ?></strong></dd>
+=======
+                        <dd class="text-right text-dark b ml-3"><strong>$59.97</strong></dd>
+>>>>>>> f2674ed6d220ff0f5d47a241b2b3eaafadfc5660
                 </dl>
                 <hr> <a href="#" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Confirmer la réservation </a> <a href="index.php" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Faire une autre réservation </a>
             </div>
         </div>
     </aside>
     </div>
+<<<<<<< HEAD
 </div>
 
 <?php require_once 'footer.php' ?>
+=======
+</div>
+>>>>>>> f2674ed6d220ff0f5d47a241b2b3eaafadfc5660

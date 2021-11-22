@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 body, h1 {
   font-family: "Roboto", sans-serif;
+=======
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+body, h1 {
+>>>>>>> f2674ed6d220ff0f5d47a241b2b3eaafadfc5660
   background: #161B33;
   color: #F1DAC4;
   margin-top: 20px;
