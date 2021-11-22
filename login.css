@@ -1,0 +1,14 @@
+.card {
+    background-color: white;
+    box-shadow: 6px 6px #474973;
+}
+
+.login_card {
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    padding: 20px;
+    text-align: center;
+}
