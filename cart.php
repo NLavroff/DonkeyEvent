@@ -5,21 +5,28 @@ require_once 'index.html';
 
 session_start();
 
+const BR = '<br> <br>';
+
 if (empty($_SESSION['cartItems'])) {
     $_SESSION['cartItems'] = [];
 }
-const BR = '<br> <br>';
 
-?>
-
-
-
-<?php
 if (!empty($_GET)) {
-    
     $idSession = $_GET['idSession'];
     if (isset($_GET['nbTickets'])) {
         $nbTickets = $_GET['nbTickets'];
+    } else {
+        $nbTickets = 1;
+    }
+    if (isset($_GET['insurance'])) {
+        $insurance = $_GET['insurance'];
+    } else {
+        $insurance = FALSE;
+    }
+    if (isset($_GET['cancellation'])) {
+        $cancellation = $_GET['cancellation'];
+    } else {
+        $cancellation = FALSE;
     }
 
     if (!empty($idSession)) {
@@ -28,10 +35,17 @@ if (!empty($_GET)) {
         JOIN Event ON Event_idEvent = idEvent JOIN Venue ON Venue_idVenue = idVenue JOIN City ON City_idCity = idCity JOIN Performance ON Performance.Event_idEvent = idEvent JOIN Artist ON Artist_idArtist = idArtist JOIN Genre ON Genre_idGenre = idGenre 
         WHERE idSession =" . $idSession;
         $statement = $pdo->query($query);
-
-        $_SESSION['cartItems'] = array_merge($_SESSION['cartItems'], $statement->fetchAll(PDO::FETCH_ASSOC));
+        $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }
+
+$_SESSION['cartItems'] [$idSession]= [
+"session"=>$idSession,
+"nbTickets"=>$nbTickets,
+"insurance"=>$insurance,
+"cancellation"=>$cancellation
+];
+
 ?>
 <pre>
 <?php
@@ -39,6 +53,8 @@ print_r($_SESSION['cartItems']);
 ?>
 </pre>
 <?php
+
+/* 
 if (isset($_SESSION['cartItems'])) { ?>
 <div class="container-fluid">
 <h1>Mon panier</h1>
@@ -103,4 +119,4 @@ if (isset($_SESSION['cartItems'])) { ?>
         </div>
     </aside>
     </div>
-</div>
+</div> */
