@@ -41,7 +41,7 @@ if (!$date) {
             JOIN Event ON Event_idEvent = idEvent 
             JOIN Venue ON Venue_idVenue = idVenue 
                 JOIN City ON City_idCity = idCity 
-            JOIN Performance 
+            JOIN Performance ON Performance.Event_idEvent = Event.idEvent
                 JOIN Artist ON Artist_idArtist = idArtist 
                 JOIN Genre ON Genre_idGenre = idGenre
         WHERE price <= :price AND DATE(date) >= '$currentDate'
@@ -51,11 +51,11 @@ if (!$date) {
     $query = "
         SELECT Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price 
         FROM Session 
-            JOIN Event ON Event_idEvent = idEvent 
-            JOIN Venue ON Venue_idVenue = idVenue 
-                JOIN City ON City_idCity = idCity 
-            JOIN Performance 
-                JOIN Artist ON Artist_idArtist = idArtist 
+            JOIN Event ON Event_idEvent = idEvent
+            JOIN Venue ON Venue_idVenue = idVenue
+                JOIN City ON City_idCity = idCity
+            JOIN Performance ON Performance.Event_idEvent = Event.idEvent
+                JOIN Artist ON Artist_idArtist = idArtist
                 JOIN Genre ON Genre_idGenre = idGenre
         WHERE price <= :price AND DATE(date) = :date
         HAVING INSTR(event, :search) OR INSTR(genre, :search) OR INSTR(artist, :search) OR INSTR(venue, :search) OR INSTR(city, :search)
