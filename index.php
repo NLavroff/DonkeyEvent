@@ -3,16 +3,10 @@
 require_once 'connec.php';
 require_once 'header.php';
 require_once 'index.html';
-require_once 'header.php';
-
 
 session_start();
 
 const BR = '<br> <br>';
-
-?>
-
-<?php
 
 $query = "SELECT * FROM Event";
 $statement = $pdo->query($query);
@@ -32,4 +26,3 @@ $events = $statement->fetchAll();
 <?php
 require_once 'footer.php';
 ?>
-
