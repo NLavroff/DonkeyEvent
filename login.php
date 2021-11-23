@@ -31,7 +31,7 @@ if (isset($_POST['user_login'])){
 <div class="card" style="width: 20rem;">
   <img src="medias/login.jpg" class="card-img-top" alt="crowd in concert">
   <div class="card_body">
-    <form action="login.php" method="post">
+    <form action="" method="post">
             <div class="col-sm-12">
                 <input type="text" id="login" name="user_login" placeholder="Identifiant">
             </div>
