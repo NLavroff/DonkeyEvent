@@ -17,6 +17,7 @@ const BR = '<br> <br>';
 if (!empty($_GET)) {
     
     $idSession = $_GET['idSession'];
+    $nbTickets = $_GET['nbTickets'];
 
     if (!empty($idSession)) {
         $query = "SELECT capacity, Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price, idSession 
@@ -66,7 +67,7 @@ if (isset($_SESSION['cartItems'])) { ?>
                                         <?php
                                         $capacity = (int) $_SESSION['cartItems'][$i]['capacity'];
                                         for($j=1; $j<=$capacity && $j<=10; $j++) { ?>
-                                        <option value=<?php echo $j ?>><?php echo $j ?></option>
+                                        <option <?php if ($j == $nbTickets) { ?> selected="selected" <?php } ?> value=<?php echo $j ?>><?php echo $j ?></option>
                                         <?php } ?>
                                     </select></td>
                                     <td class="text-right d-none d-md-block"><a href="" class="btn btn-light btn-round" data-abc="true"> Supprimer </a> </td>
