@@ -4,6 +4,7 @@ require_once 'connec.php';
 require_once 'index.html';
 
 session_start();
+
 if (empty($_SESSION['cartItems'])) {
     $_SESSION['cartItems'] = [];
 }
@@ -17,7 +18,9 @@ const BR = '<br> <br>';
 if (!empty($_GET)) {
     
     $idSession = $_GET['idSession'];
-    $nbTickets = $_GET['nbTickets'];
+    if (isset($_GET['nbTickets'])) {
+        $nbTickets = $_GET['nbTickets'];
+    }
 
     if (!empty($idSession)) {
         $query = "SELECT capacity, Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price, idSession 
@@ -29,7 +32,13 @@ if (!empty($_GET)) {
         $_SESSION['cartItems'] = array_merge($_SESSION['cartItems'], $statement->fetchAll(PDO::FETCH_ASSOC));
     }
 }
-
+?>
+<pre>
+<?php
+print_r($_SESSION['cartItems']);
+?>
+</pre>
+<?php
 if (isset($_SESSION['cartItems'])) { ?>
 <div class="container-fluid">
 <h1>Mon panier</h1>
@@ -67,7 +76,7 @@ if (isset($_SESSION['cartItems'])) { ?>
                                         <?php
                                         $capacity = (int) $_SESSION['cartItems'][$i]['capacity'];
                                         for($j=1; $j<=$capacity && $j<=10; $j++) { ?>
-                                        <option <?php if ($j == $nbTickets) { ?> selected="selected" <?php } ?> value=<?php echo $j ?>><?php echo $j ?></option>
+                                        <option <?php if (isset($nbTickets) && $j == $nbTickets) { ?> selected="selected" <?php } ?> value=<?php echo $j ?>><?php echo $j ?></option>
                                         <?php } ?>
                                     </select></td>
                                     <td class="text-right d-none d-md-block"><a href="" class="btn btn-light btn-round" data-abc="true"> Supprimer </a> </td>
