@@ -84,7 +84,7 @@ $sessions = $statement->fetchAll();
                     <select name="nbTickets">
                         <?php
                         $capacity = (int) $session['capacity'];
-                        for($i=1; $i<=$capacity; $i++) { ?>
+                        for($i=1; $i<=$capacity && $i<=10; $i++) { ?>
                         <option value=<?php echo $i ?>><?php echo $i ?></option>
                         <?php } ?>
                     </select>
