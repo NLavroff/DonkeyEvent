@@ -26,22 +26,22 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="#">Cinéma</a>
+            <a class="nav-link" href="cinema.php">Cinéma</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Théâtre</a>
+            <a class="nav-link" href="theater.php">Théâtre</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Danse</a>
+            <a class="nav-link" href="dance.php">Danse</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Expos</a>
+            <a class="nav-link" href="exhibit.php">Expos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Concert</a>
+            <a class="nav-link" href="concert.php">Concert</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Stand Up</a>
+            <a class="nav-link" href="standup.php">Stand Up</a>
           </li>
         </ul>
         <i class="bi bi-cart"></i>
