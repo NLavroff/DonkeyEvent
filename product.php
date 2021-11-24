@@ -4,8 +4,6 @@ require_once 'connec.php';
 require_once 'header.php';
 require_once 'index.html';
 
-session_start();
-
 const BR = '<br> <br>';
 
 if (!isset($_GET['idEvent'])) {
