@@ -68,34 +68,33 @@ $sessions = $statement->fetchAll();
         <th>Tarif</th>
         <th>Réserver</th>
     </tr>
-
     <tr>
-        <?php
-        foreach ($sessions as $session) { ?>
-            <td><?php echo $session['event']; ?></td>
-            <td><?php echo $session['genre']; ?></td>
-            <td><?php echo $session['date']; ?></td>
-            <td><?php echo $session['city']; ?></td>
-            <td><?php echo $session['venue']; ?></td>
-            <td><?php echo $session['price']; ?>€</td>
-            <?php if ($currentDate >= $session['date']) { ?>
-                <td>Cette événement est passé</td>
-            <?php } else { ?>
-                <td>
-                    <form method="GET" action="cart.php" name="cart">
-                        <label for="nbTickets">Nombre de places : </label>
-                        <select name="nbTickets">
-                            <?php
-                            $capacity = (int) $session['capacity'];
-                            for ($i = 1; $i <= $capacity; $i++) { ?>
-                                <option value=<?php echo $i ?>><?php echo $i ?></option>
-                            <?php } ?>
-                        </select>
-                        <input type="hidden" name="idSession" value="<?php echo $session["idSession"]; ?>" />
-                        <button type="submit">Ajouter au panier</button>
-                    </form>
-                </td>
-            <?php } ?>
+    <?php
+    foreach ($sessions as $session) { ?>
+        <td><?php echo $session['event']; ?></td>
+        <td><?php echo $session['genre']; ?></td>
+        <td><?php echo $session['date']; ?></td>
+        <td><?php echo $session['city']; ?></td>
+        <td><?php echo $session['venue']; ?></td>
+        <td><?php echo $session['price']; ?>€</td>
+        <?php if ($currentDate >= $session['date']) { ?>
+            <td>Cet événement est passé</td>
+        <?php } else { ?>
+            <td>
+                <form method="GET" action="cart.php" name="cart">
+                    <label for="nbTickets">Nombre de places : </label>
+                    <select name="nbTickets">
+                        <?php
+                        $capacity = (int) $session['capacity'];
+                        for($i=1; $i<=$capacity && $i<=10; $i++) { ?>
+                        <option value=<?php echo $i ?>><?php echo $i ?></option>
+                        <?php } ?>
+                    </select>
+                    <input type="hidden" name="idSession" value="<?php echo $session["idSession"]; ?>" />
+                    <button type="submit">Ajouter au panier</button>
+                </form>
+            </td>
+        <?php } ?>
     </tr>
 <?php } ?>
 </table>

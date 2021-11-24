@@ -34,7 +34,7 @@ $date = trim($_GET["searchDate"]);
 
 if (!$date) {
     $query = "
-        SELECT Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price 
+        SELECT idSession, Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price 
         FROM Session 
             JOIN Event ON Event_idEvent = idEvent 
             JOIN Venue ON Venue_idVenue = idVenue 
@@ -47,7 +47,7 @@ if (!$date) {
     ";
 } else {
     $query = "
-        SELECT Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price 
+        SELECT idSession, Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price 
         FROM Session 
             JOIN Event ON Event_idEvent = idEvent
             JOIN Venue ON Venue_idVenue = idVenue
@@ -78,11 +78,11 @@ if ($statement->rowCount() > 0) {
             <td><?php echo $event["date"]; ?></td>
             <td><?php echo $event["price"]; ?></td>
             <td>
-                <form action="" method="post"> <?php
-                    if (in_array($event["event"], $_SESSION["cart"])) { ?>
+                <form action="cart.php" method="get"> <?php
+                    if (in_array($event["idSession"], $_SESSION["cart"])) { ?>
                         <button disabled>Already in your cart</button> <?php
                     } else { ?>
-                    <button name="cart" value="<?php echo $row["title"]; ?>" type="submit">Add to cart</button> <?php
+                    <button name="idSession" value="<?php echo $event["idSession"]; ?>" type="submit">Add to cart</button> <?php
                     } ?>
                 </form>
             </td>
