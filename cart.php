@@ -105,7 +105,7 @@ if (isset($_SESSION['cartItems'])) { ?>
                                         <td><?php echo $sessionInfo[$i]['venue']; ?></td>
                                         <td><div class="price-wrap"> <var class="price"><?php echo $sessionInfo[$i]['price'] .'€'; ?></var></div></td>
                                         <td><div class="form-group form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <input type="checkbox" name="insurance" class="form-check-input" id="exampleCheck1" <?php if ($sessionDetails["insurance"] == TRUE){ ?> checked <?php } ?>>
                                             </div>
                                         <td><select name="nbTickets">
                                             <?php
@@ -114,7 +114,7 @@ if (isset($_SESSION['cartItems'])) { ?>
                                             <option <?php if ($sessionDetails["nbTickets"] == $j){ ?> selected="selected" <?php } ?> value=<?php echo $j ?>><?php echo $j ?></option>
                                             <?php } ?>
                                         </select></td>
-                                        <td class="text-right d-none d-md-block"><a href="" class="btn btn-light btn-round" data-abc="true"> Supprimer </a> </td>
+                                        <td class="text-right d-none d-md-block"><a href="" class="btn btn-light btn-round" data-abc="true"> Supprimer </a></td>
                             <?php } }
                             } else {
                                 echo "<br>Votre panier est vide !";
