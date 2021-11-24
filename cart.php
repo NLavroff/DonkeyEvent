@@ -117,7 +117,7 @@ if (isset($_SESSION['cartItems'])) { ?>
                                         <td class="text-right d-none d-md-block">
                                             <form action="deleteFromCart.php" method="get">
                                                 <input type="hidden" name="idSession" value="<?php echo $sessionDetails["session"]; ?>" />
-                                                <button type="submit" name="cancellation" value="TRUE">Supprimer</button>
+                                                <button class="btn btn-light btn-round" data-abc="true" type="submit" name="cancellation" value="TRUE">Supprimer</button>
                                             </form>
                                         <!-- <a href="" class="btn btn-light btn-round" data-abc="true"> Supprimer </a></td> -->
                             <?php } }
