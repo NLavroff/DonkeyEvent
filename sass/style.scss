@@ -4,12 +4,13 @@ $links-color: #474973;
 $btn-color: #A69CAC;
 $bg-color: #161B33;
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
 body, h1 {
     background: $bg-color;
     color: $secundary-color;
 	margin-top: 20px;
 }
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 body {
     background-color: $bg-color;
@@ -126,4 +127,26 @@ a {
 
 .bi.bi-cart {
     color : $primary-color;
+}
+
+:hover.ms-n5 {
+    color :$links-color;
+}
+
+.ms-n5 {
+    height:40px;
+}
+.form-control.border-end-0.border {
+    height : 40px;
+}
+
+.fa.fa-search {
+    padding : 0px;
+    margin: 0px;
+    font-size: 20px;
+   
+}
+
+.border {
+    border: 2px solid $bg-color;
 }

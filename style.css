@@ -122,4 +122,26 @@ a {
   color: #0D0C1D;
 }
 
+:hover.ms-n5 {
+  color: #474973;
+}
+
+.ms-n5 {
+  height: 40px;
+}
+
+.form-control.border-end-0.border {
+  height: 40px;
+}
+
+.fa.fa-search {
+  padding: 0px;
+  margin: 0px;
+  font-size: 20px;
+}
+
+.border {
+  border: 2px solid #161B33;
+}
+
 /*# sourceMappingURL=style.css.map */
