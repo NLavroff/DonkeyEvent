@@ -4,12 +4,10 @@ require_once 'connec.php';
 require_once 'header.php';
 require_once 'index.html';
 
-session_start();
-
 const BR = '<br> <br>';
 
 if (!isset($_GET['idEvent'])) {
-    header ('location: index.php');
+    header('location: index.php');
 }
 
 $idEvent = $_GET['idEvent'];
@@ -21,24 +19,29 @@ date_default_timezone_set('Europe/Paris');
 $currentDate = date("Y-m-d H:i:s");
 
 ?>
-<table>
-<tr>
-    <th>Titre</th>
-    <th>Descriptif</th>
-    <th>Cover</th>
-</tr>
-<tr>
-<?php foreach ($events as $event) { ?>
-    <td><?php echo $event['name']; ?></td>
-    <td><?php echo $event['description']; ?></td>
-    <td><?php echo $event['cover']; ?></td>
-</tr>
-<?php } ?>
-</table>
 
-<br><br><br>
-<hr>
-<br><br><br>
+<div class="container">
+    <div class="row">
+        <?php foreach ($events as $event) { ?>
+    </div>
+    <div class="row">
+        <?php echo $event['cover']; ?>
+        Cover
+    </div>
+    <div class="row">
+        <h1><?php echo $event['name']; ?></h1>
+    </div>
+    <div class="row">
+        <?php echo $event['description']; ?>
+    </div>
+<?php } ?>
+</div>
+
+<div class="container">
+    <div class="row">
+        <h4>Réserver un spectacle</h4>
+    </div>
+</div>
 
 <?php
 $query = "
@@ -65,9 +68,8 @@ $sessions = $statement->fetchAll();
         <th>Tarif</th>
         <th>Réserver</th>
     </tr>
-
     <tr>
-<?php
+    <?php
     foreach ($sessions as $session) { ?>
         <td><?php echo $session['event']; ?></td>
         <td><?php echo $session['genre']; ?></td>

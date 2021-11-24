@@ -1,14 +1,8 @@
-.card {
-    background-color: white;
-    box-shadow: 6px 6px #474973;
+h2 {
+    color: #0D0C1D;
 }
 
-.login_card {
-    display: flex;
-    justify-content: center;
-}
-
-h1 {
-    padding: 20px;
-    text-align: center;
+.modal-content input{
+    margin: 10px 0px 0px 0px;
+    padding: 10px;
 }
