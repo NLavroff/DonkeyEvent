@@ -81,9 +81,9 @@ if (isset($_POST['user_login'])){
         </ul>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <form action="searchResult.php" method="get" autocomplete="on">
+            <form action="searchResult.php" method="GET" autocomplete="on">
               <div class="input-group">
-                <input class="form-control border-start-0 border-end-0 border-top-0 border" type="search" placeholder="Rechercher..." id="search" value="<?php if (isset($_GET["search"])) {
+                <input class="form-control border-start-0 border-end-0 border-top-0 border" type="text" placeholder="Rechercher..." name="search" value="<?php if (isset($_GET["search"])) {
                                                                                                                                                             echo $_GET["search"];
                                                                                                                                                           } ?>">
 
