@@ -28,15 +28,6 @@ if (!empty($_GET)) {
     } else {
         $cancellation = FALSE;
     }
-
-    if (!empty($idSession)) {
-        $query = "SELECT capacity, Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price, idSession 
-        FROM Session 
-        JOIN Event ON Event_idEvent = idEvent JOIN Venue ON Venue_idVenue = idVenue JOIN City ON City_idCity = idCity JOIN Performance ON Performance.Event_idEvent = idEvent JOIN Artist ON Artist_idArtist = idArtist JOIN Genre ON Genre_idGenre = idGenre 
-        WHERE idSession =" . $idSession;
-        $statement = $pdo->query($query);
-        $sessionInfo = $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
 }
 
 $_SESSION['cartItems'][$idSession] = [
@@ -46,7 +37,9 @@ $_SESSION['cartItems'][$idSession] = [
 "cancellation"=>$cancellation
 ];
 
-/* ?>
+/* echo "contenu du panier";
+
+?>
 <pre>
 <?php
 print_r($_SESSION['cartItems']);
@@ -55,6 +48,19 @@ print_r($_SESSION['cartItems']);
 <?php */
 
 foreach ($_SESSION['cartItems'] as $session => $sessionDetails) {
-    echo $sessionDetails["session"];
-    echo BR;
+    echo "détails de la session : ". $sessionDetails["session"];
+    $query = "SELECT capacity, Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price, idSession 
+    FROM Session 
+    JOIN Event ON Event_idEvent = idEvent JOIN Venue ON Venue_idVenue = idVenue JOIN City ON City_idCity = idCity JOIN Performance ON Performance.Event_idEvent = idEvent JOIN Artist ON Artist_idArtist = idArtist JOIN Genre ON Genre_idGenre = idGenre 
+    WHERE idSession =" . $sessionDetails["session"];
+    $statement = $pdo->query($query);
+    $sessionInfo = $statement->fetchAll(PDO::FETCH_ASSOC);
+    ?>
+    <pre>
+    <?php
+    print_r($sessionInfo);
+    ?>
+    </pre>
+    <?php
+    echo "nombre de places réservées : ". $sessionDetails["nbTickets"] .  BR;
 }
