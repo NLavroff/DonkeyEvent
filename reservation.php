@@ -40,6 +40,7 @@ $currentDate = date("Y-m-d H:i:s");
     <th>Annuler</th>
 </tr>
 <tr>
+    
 <?php
 foreach ($reservations as $reservation) { ?>
     <td><?php echo $reservation['event']; ?></td>

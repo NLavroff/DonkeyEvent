@@ -7,10 +7,6 @@ require_once 'header.php';
 ?>
 <!-- A bit of style, to be removed when we develop the CSS part of the project -->
 <style>
-body {
-  color: #A69CAC;
-}
-
 table {
   font-family: arial, sans-serif;
   color: #F1DAC4;
@@ -34,7 +30,7 @@ tr:nth-child(even) {
 <h1>Recherche</h1>
 <form action="searchResult.php" method="get" autocomplete="on">
     <label for="search">Je souhaite réserver : </label>
-    <input type="text" name="search" placeholder="Artiste/Salle/Ville" value=<?php if (isset($_GET["search"])) { echo $_GET["search"]; } ?>>
+    <input type="text" name="search" placeholder="Artiste/Salle/Ville" value="<?php if (isset($_GET["search"])) { echo $_GET["search"]; } ?>">
     <label for="searchDate">le : </label>
     <input type="date" name="searchDate" value=<?php if (isset($_GET["searchDate"])) { echo $_GET["searchDate"]; } ?>>
     <label for="searchPrice">Prix maximum par place : </label>

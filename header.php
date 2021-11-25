@@ -2,7 +2,10 @@
 
 require_once 'connec.php';
 require_once 'index.html';
-session_start();
+
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 
 if (isset($_POST['user_login'])){
     $userLogin = trim($_POST['user_login']);
