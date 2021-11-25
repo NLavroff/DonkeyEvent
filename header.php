@@ -2,7 +2,10 @@
 
 require_once 'connec.php';
 require_once 'index.html';
-session_start();
+
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 
 if (isset($_POST['user_login'])){
     $userLogin = trim($_POST['user_login']);
@@ -83,6 +86,8 @@ if (isset($_POST['user_login'])){
           <li class="nav-item">
             <form action="searchResult.php" method="GET" autocomplete="on">
               <div class="input-group">
+                <input type="hidden" name="searchDate" value=<?php if (isset($_GET["searchDate"])) { echo $_GET["searchDate"]; } ?>>
+                <input type="hidden" name="searchPrice" value=100>
                 <input class="form-control border-start-0 border-end-0 border-top-0 border" type="text" placeholder="Rechercher..." name="search" value="<?php if (isset($_GET["search"])) {
                                                                                                                                                             echo $_GET["search"];
                                                                                                                                                           } ?>">

@@ -2,10 +2,12 @@
 
 require_once 'connec.php';
 require_once 'index.html';
-
-session_start();
+require_once 'header.php';
 
 const BR = '<br> <br>';
+
+$total = 0;
+$insurancePrice = 5;
 
 if (empty($_SESSION['cartItems'])) {
     $_SESSION['cartItems'] = [];
@@ -56,7 +58,8 @@ if (isset($_SESSION['cartItems'])) { ?>
                                     <th scope="col">Lieu</th>
                                     <th scope="col">Tarif</th>
                                     <th scope="col">Assurance anulation</th>
-                                    <th scope="col">Modifier la quantité</th>
+                                    <th scope="col">Quantité</th>
+                                    <th scope="col">Valider les modifications</th>
                                     <th scope="col"> Supprimer la réservation</th>
                                 </tr>
                                 <?php 
@@ -76,22 +79,31 @@ if (isset($_SESSION['cartItems'])) { ?>
                                                 <td><?php echo $sessionInfo[$i]['city']; ?></td>
                                                 <td><?php echo $sessionInfo[$i]['venue']; ?></td>
                                                 <td><div class="price-wrap"><var class="price"><?php echo $sessionInfo[$i]['price'] .'€'; ?></var></div></td>
-                                                <td><div class="form-group form-check">
-                                                    <input type="checkbox" name="insurance" value="TRUE" class="form-check-input" id="exampleCheck1" <?php if ($sessionDetails["insurance"] == TRUE){ ?> checked <?php } ?>>
-                                                </div></td>
-                                                <td><select name="nbTickets">
-                                                    <?php
-                                                    $capacity = (int) $sessionInfo[$i]['capacity'];
-                                                    for($j=1; $j<=$capacity && $j<=10; $j++) { ?>
-                                                        <option <?php if ($sessionDetails["nbTickets"] == $j){ ?> selected="selected" <?php } ?> value=<?php echo $j ?>><?php echo $j ?></option>
-                                                    <?php } ?>
-                                                </select></td>
+                                                <form action="refreshCart.php" method="get">
+                                                    <input type="hidden" name="idSession" value="<?php echo $sessionDetails["session"]; ?>" />
+                                                    <td><div class="form-group form-check">
+                                                        <input type="checkbox" name="insurance" value="TRUE" class="form-check-input" id="exampleCheck1" <?php if ($sessionDetails["insurance"] == TRUE){ ?> checked <?php } ?>>
+                                                    </div></td>
+                                                    <td><select name="nbTickets">
+                                                        <?php
+                                                        $capacity = (int) $sessionInfo[$i]['capacity'];
+                                                        for($j=1; $j<=$capacity && $j<=10; $j++) { ?>
+                                                            <option <?php if ($sessionDetails["nbTickets"] == $j){ ?> selected="selected" <?php } ?> value=<?php echo $j ?>><?php echo $j ?></option>
+                                                        <?php } ?>
+                                                    </select></td>
+                                                    <td><button class="btn btn-primary btn-sm btn-round" data-abc="true" type="submit">Valider</button></td>
+                                                </form>
                                                 <td class="text-right d-none d-md-block">
                                                     <form action="deleteFromCart.php" method="get">
                                                         <input type="hidden" name="idSession" value="<?php echo $sessionDetails["session"]; ?>" />
-                                                        <button class="btn btn-light btn-round" data-abc="true" type="submit" name="cancellation" value="TRUE">Supprimer</button>
+                                                        <button class="btn btn-danger btn-sm btn-round" data-abc="true" type="submit" name="cancellation" value="TRUE">Supprimer</button>
                                                     </form>
                                                 </td>
+                                                <?php $total += $sessionDetails["nbTickets"]*$sessionInfo[$i]['price'];
+                                                if ($sessionDetails["insurance"]) {
+                                                    $total += $insurancePrice;
+                                                }
+                                                ?>
                                             </tr>
                                         </tbody>
                                     <?php } ?>
@@ -105,11 +117,13 @@ if (isset($_SESSION['cartItems'])) { ?>
                 <div class="card">
                     <div class="card-body">
                         <dl class="dlist-align">
-                            <dt>Total:</dt>
-                            <dd class="text-right text-dark b ml-3"><strong>$59.97</strong></dd>
+                            <dt>Total :</dt>
+                            <dd class="text-right text-dark b ml-3"><strong><?php echo $total ?> €</strong></dd>
                         </dl>
                         <hr>
-                        <a href="#" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Confirmer la réservation </a>
+                        <form action="validateCart.php">
+                            <button class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Confirmer la réservation </button>
+                        </form>
                         <a href="index.php" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Faire une autre réservation </a>
                     </div>
                 </div>
