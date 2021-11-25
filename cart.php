@@ -6,6 +6,8 @@ require_once 'header.php';
 
 const BR = '<br> <br>';
 
+$total = 0;
+
 if (empty($_SESSION['cartItems'])) {
     $_SESSION['cartItems'] = [];
 }
@@ -91,6 +93,7 @@ if (isset($_SESSION['cartItems'])) { ?>
                                                         <button class="btn btn-light btn-round" data-abc="true" type="submit" name="cancellation" value="TRUE">Supprimer</button>
                                                     </form>
                                                 </td>
+                                                <?php $total = $total + $sessionDetails["nbTickets"]*$sessionInfo[$i]['price'] ?>
                                             </tr>
                                         </tbody>
                                     <?php } ?>
@@ -104,8 +107,8 @@ if (isset($_SESSION['cartItems'])) { ?>
                 <div class="card">
                     <div class="card-body">
                         <dl class="dlist-align">
-                            <dt>Total:</dt>
-                            <dd class="text-right text-dark b ml-3"><strong>$59.97</strong></dd>
+                            <dt>Total :</dt>
+                            <dd class="text-right text-dark b ml-3"><strong><?php echo $total ?> €</strong></dd>
                         </dl>
                         <hr>
                         <a href="#" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Confirmer la réservation </a>
