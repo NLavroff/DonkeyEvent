@@ -7,7 +7,6 @@ $bg-color: #161B33;
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 body, h1 {
-    background: $bg-color;
     color: $secundary-color;
 	margin-top: 20px;
 }
@@ -148,4 +147,8 @@ a {
 
 .border {
     border: 2px solid $bg-color;
+}
+
+.col {
+    text-align: justify;
 }

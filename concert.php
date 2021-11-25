@@ -20,23 +20,24 @@ $statement->execute();
 $concerts = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="container">
-    <div class="row">
-        <?php $concerts = array_map("unserialize", array_unique(array_map("serialize", $concerts)));?>
-        <?php foreach ($concerts as $concert) { ?>
-        </div>
-        <div class="row">
-            <img src="Cover/<?php echo $concert['cover']; ?>">
-        </div>
-        <div class="row">
-            <h1><?php echo $concert['event']; ?></h1>
-        </div>
-        <div class="row">
-            <?php echo $concert['description']; ?>
-        </div>
-</div>
 
-<?php } 
-
+<?php $concerts = array_map("unserialize", array_unique(array_map("serialize", $concerts))); ?>
+<?php foreach ($concerts as $concert) { ?>
+    <div class="container-fluid">
+        <div class="row row-cols-2">
+            <div class="col">
+                <img src="Cover/<?php echo $concert['cover']; ?>" class="col-md-8 float-md-end mb-3 ms-md-3">
+            </div>
+            <div class="col">
+                <h1><?php echo $concert['event']; ?></h1>
+                <div class="row">
+                    <div class="col">
+                        <?php echo $concert['description']; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php }
 require_once 'footer.php'
 ?>

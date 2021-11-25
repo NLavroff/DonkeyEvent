@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 body, h1 {
-  background: #161B33;
   color: #F1DAC4;
   margin-top: 20px;
 }
@@ -195,5 +194,9 @@ header .overlay {
   font-size: 50px;
 }
 
+
+.col {
+  text-align: justify;
+}
 
 /*# sourceMappingURL=style.css.map */
