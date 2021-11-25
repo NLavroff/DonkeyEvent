@@ -58,7 +58,7 @@ foreach ($reservations as $reservation) { ?>
                         <?php
                         $capacity = (int) $reservation['capacity'];
                         for($i=1; $i<=$capacity && $i<=10; $i++) { ?>
-                        <option value=<?php echo $i ?>><?php echo $i ?></option>
+                        <option <?php if ($reservation['ticketsQuantity'] == $i){ ?> selected="selected" <?php } ?> value=<?php echo $i-$reservation['ticketsQuantity'] ?>><?php echo $i ?></option>
                         <?php } ?>
                     </select>
                     <input type="hidden" name="idSession" value="<?php echo $reservation["idSession"]; ?>" />
@@ -76,3 +76,9 @@ foreach ($reservations as $reservation) { ?>
     </tr>
 <?php } ?>
 </table>
+<!-- 
+gérer l'affichage de quantités négatives dans le panier => changer la phrase et afficher l'opposé
+    => impossible de gérer les quanntités négatives en get via le panier, on pourrait revendre des places qu'on ne possède pas
+        => on peut potentiellement acheter plus de place que la capacité de l'envent =>>> il faut tout passer en post :/
+gérér le zéro
+l'annulation doit passer par un autre formulaire -->

@@ -51,7 +51,7 @@ if (isset($_SESSION['cartItems'])) { ?>
                         <table class="table table-borderless table-shopping-cart">
                             <thead class="text-muted">
                                 <tr class="small text-uppercase">
-                                    <th scope="col">Evènement</th>
+                                    <th scope="col">Événement</th>
                                     <th scope="col">Catégorie</th>
                                     <th scope="col">Date</th>
                                     <th scope="col">Ville</th>
@@ -60,7 +60,7 @@ if (isset($_SESSION['cartItems'])) { ?>
                                     <th scope="col">Assurance anulation</th>
                                     <th scope="col">Quantité</th>
                                     <th scope="col">Valider les modifications</th>
-                                    <th scope="col"> Supprimer la réservation</th>
+                                    <th scope="col">Supprimer la réservation</th>
                                 </tr>
                                 <?php 
                                 foreach ($_SESSION['cartItems'] as $session => $sessionDetails) {
@@ -86,10 +86,14 @@ if (isset($_SESSION['cartItems'])) { ?>
                                                     </div></td>
                                                     <td><select name="nbTickets">
                                                         <?php
-                                                        $capacity = (int) $sessionInfo[$i]['capacity'];
-                                                        for($j=1; $j<=$capacity && $j<=10; $j++) { ?>
-                                                            <option <?php if ($sessionDetails["nbTickets"] == $j){ ?> selected="selected" <?php } ?> value=<?php echo $j ?>><?php echo $j ?></option>
-                                                        <?php } ?>
+                                                        if ($sessionDetails["nbTickets"]<=0) { ?>
+                                                            <option selected="selected" value=<?php echo $sessionDetails["nbTickets"] ?>><?php echo $sessionDetails["nbTickets"] ?></option>
+                                                        <?php } else {
+                                                            $capacity = (int) $sessionInfo[$i]['capacity'];
+                                                            for($j=1; $j<=$capacity && $j<=10; $j++) { ?>
+                                                                <option <?php if ($sessionDetails["nbTickets"] == $j){ ?> selected="selected" <?php } ?> value=<?php echo $j ?>><?php echo $j ?></option>
+                                                            <?php }
+                                                        } ?>
                                                     </select></td>
                                                     <td><button class="btn btn-primary btn-sm btn-round" data-abc="true" type="submit">Valider</button></td>
                                                 </form>
