@@ -35,7 +35,7 @@ tr:nth-child(even) {
 <form action="searchResult.php" method="get" autocomplete="on">
     <label for="search">Je souhaite réserver : </label>
     <input type="text" name="search" placeholder="Artiste/Salle/Ville" value=<?php if (isset($_GET["search"])) { echo $_GET["search"]; } ?>>
-    <label for="search">le : </label>
+    <label for="searchDate">le : </label>
     <input type="date" name="searchDate" value=<?php if (isset($_GET["searchDate"])) { echo $_GET["searchDate"]; } ?>>
     <label for="searchPrice">Prix maximum par place : </label>
     <select name="searchPrice">
