@@ -182,4 +182,17 @@ header .overlay {
   z-index: 1;
 }
 
+.img-genre {
+  position: relative;
+}
+
+.genre {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 50px;
+}
+
+
 /*# sourceMappingURL=style.css.map */

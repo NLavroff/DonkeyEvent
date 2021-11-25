@@ -35,23 +35,35 @@ $events = $statement->fetchAll();
     </div>
 </div>
 
-<div class="container img-fluid">
-    <div>
-      <img src="medias/cinema.jpg" alt="cinema" class="w-50">
-    </div>
-    <div>
-      <img src="medias/expo.jpg" alt="exposition" class="w-50">
-    </div>
-    <div>
-      <img src="medias/concert.jpg" alt="concert" class="w-50">
-    </div>
-    <div>
-      <img src="medias/danse.jpg" alt="danse" class="w-50">
-    </div>
-    <div>
-      <img src="medias/theatre.jpg" alt="theatre" class="w-50">
-    </div>
+<div class="container">
+
+<div class="container img-genre text-center ">
+        <img src="medias/cinema.jpg" class="w-60 img-fluid">
+        <h3 class="genre">CINÉMA</h3>
 </div>
+
+<div class="container img-genre text-center ">
+        <img src="medias/expo.jpg" class="w-60 img-fluid">
+        <h3 class="genre">EXPOSITIONS</h3>
+</div>
+
+<div class="container img-genre text-center ">
+        <img src="medias/concert.jpg" class="w-60 img-fluid">
+        <h3 class="genre">CONCERTS</h3>
+</div>
+
+<div class="container img-genre text-center ">
+        <img src="medias/danse.jpg" class="w-60 img-fluid">
+        <h3 class="genre">DANSE</h3>
+</div>
+
+<div class="container img-genre text-center ">
+        <img src="medias/theatre.jpg" class="w-60 img-fluid">
+        <h3 class="genre">THÉÂTRE</h3>
+</div>
+        
+</div>
+
 
 <ul>
     <?php foreach($events as $event): ?>
