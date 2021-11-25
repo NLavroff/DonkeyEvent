@@ -7,6 +7,7 @@ require_once 'header.php';
 const BR = '<br> <br>';
 
 $total = 0;
+$insurancePrice = 5;
 
 if (empty($_SESSION['cartItems'])) {
     $_SESSION['cartItems'] = [];
@@ -77,23 +78,30 @@ if (isset($_SESSION['cartItems'])) { ?>
                                                 <td><?php echo $sessionInfo[$i]['city']; ?></td>
                                                 <td><?php echo $sessionInfo[$i]['venue']; ?></td>
                                                 <td><div class="price-wrap"><var class="price"><?php echo $sessionInfo[$i]['price'] .'€'; ?></var></div></td>
-                                                <td><div class="form-group form-check">
-                                                    <input type="checkbox" name="insurance" value="TRUE" class="form-check-input" id="exampleCheck1" <?php if ($sessionDetails["insurance"] == TRUE){ ?> checked <?php } ?>>
-                                                </div></td>
-                                                <td><select name="nbTickets">
-                                                    <?php
-                                                    $capacity = (int) $sessionInfo[$i]['capacity'];
-                                                    for($j=1; $j<=$capacity && $j<=10; $j++) { ?>
-                                                        <option <?php if ($sessionDetails["nbTickets"] == $j){ ?> selected="selected" <?php } ?> value=<?php echo $j ?>><?php echo $j ?></option>
-                                                    <?php } ?>
-                                                </select></td>
+                                                <form action="refreshCart.php" method="get">
+                                                    <input type="hidden" name="idSession" value="<?php echo $sessionDetails["session"]; ?>" />
+                                                    <td><div class="form-group form-check">
+                                                        <input type="checkbox" name="insurance" value="TRUE" class="form-check-input" id="exampleCheck1" <?php if ($sessionDetails["insurance"] == TRUE){ ?> checked <?php } ?>>
+                                                    </div></td>
+                                                    <td><select name="nbTickets">
+                                                        <?php
+                                                        $capacity = (int) $sessionInfo[$i]['capacity'];
+                                                        for($j=1; $j<=$capacity && $j<=10; $j++) { ?>
+                                                            <option <?php if ($sessionDetails["nbTickets"] == $j){ ?> selected="selected" <?php } ?> value=<?php echo $j ?>><?php echo $j ?></option>
+                                                        <?php } ?>
+                                                    </select><input type="submit"></td>
+                                                </form>
                                                 <td class="text-right d-none d-md-block">
                                                     <form action="deleteFromCart.php" method="get">
                                                         <input type="hidden" name="idSession" value="<?php echo $sessionDetails["session"]; ?>" />
                                                         <button class="btn btn-light btn-round" data-abc="true" type="submit" name="cancellation" value="TRUE">Supprimer</button>
                                                     </form>
                                                 </td>
-                                                <?php $total = $total + $sessionDetails["nbTickets"]*$sessionInfo[$i]['price'] ?>
+                                                <?php $total += $sessionDetails["nbTickets"]*$sessionInfo[$i]['price'];
+                                                if ($sessionDetails["insurance"]) {
+                                                    $total += $insurancePrice;
+                                                }
+                                                ?>
                                             </tr>
                                         </tbody>
                                     <?php } ?>
