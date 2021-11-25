@@ -152,3 +152,29 @@ a {
 .col {
     text-align: justify;
 }
+
+.bgimage-concert {
+    width:100%;
+    height:500px;
+    background: url('https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    background-attachment: fixed;
+    justify-content: center;
+ }
+
+.space {
+    margin : 100px;
+}
+
+.text-center {
+    margin-top : 250px;
+}
+
+@media (max-width: 600px) {
+    .row {
+        display: flex;
+        flex-direction: column;
+    }
+}
