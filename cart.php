@@ -122,7 +122,7 @@ if (isset($_SESSION['cartItems'])) { ?>
                         </dl>
                         <hr>
                         <form action="validateCart.php">
-                            <button class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Confirmer la réservation </button>
+                            <button <?php if (!isset($_SESSION['user_login'])) { ?>type='button' data-bs-toggle="modal" data-bs-target="#loginModal" <?php } ?> class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Confirmer la réservation </button>
                         </form>
                         <a href="index.php" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Faire une autre réservation </a>
                     </div>

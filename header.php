@@ -22,7 +22,6 @@ if (isset($_POST['user_login'])){
 
     if(password_verify($userPassword,$row["Password"])) {
         $_SESSION["user_login"] = $userLogin;
-        header ("location: index.php");
     } else {
         echo "Votre identifiant ou votre mot de passe est incorrect.";
     }
@@ -106,7 +105,7 @@ if (isset($_POST['user_login'])){
 
           <li class="nav-item">
             <form class="d-flex">
-              <button type='button' class="btn secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Se connecter</button>
+              <button type='button' class="btn secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Se connecter</button>
             </form>
           </li>
 
@@ -121,7 +120,7 @@ if (isset($_POST['user_login'])){
   </nav>
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content ">
       <div class="modal-header">
@@ -135,7 +134,7 @@ if (isset($_POST['user_login'])){
                 <input type="text" id="login" name="user_login" placeholder="Identifiant">
             </div>
             <div class="col-sm-12">
-                <input type="text" id="password" name="user_password" placeholder="Mot de passe">
+                <input type="password" id="password" name="user_password" placeholder="Mot de passe">
             </div>
           </div>
           <div class="modal-footer">
