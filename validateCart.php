@@ -15,34 +15,22 @@ $query = "SELECT idUser FROM User WHERE Name = '$userName'";
 $statement = $pdo->query($query);
 $user = $statement->fetch();
 
+$idUser = $user['idUser'];
+
 foreach ($_SESSION["cartItems"] as $session) {
-    echo $user['idUser'];
-    echo BR;    
     $idSession = $session["session"];
-    echo $idSession;
-    echo BR;
     $ticketsQuantity = $session["nbTickets"];
-    echo $ticketsQuantity;
-    echo BR;
-    $insurance = $session["insurance"];
-    echo $insurance;
-    echo BR;
+    if ($session["insurance"] == TRUE) {
+        $insurance = 1;
+    } else {
+        $insurance = 0;
+    }
+
+    $query = "INSERT INTO Reservation
+    VALUES ($idUser, $idSession, $ticketsQuantity, $insurance)";
+    $pdo->exec($query);
 }
+ 
+unset($_SESSION["cartItems"]);
 
-?>
-<pre>
-<?php
-print_r($_SESSION);
-?>
-</pre>
-<?php
-/* 
-$query = "INSERT INTO Reservation
-SELECT idUser, " . $idSession . ", " . $ticketsQuantity . ", " . $insurance . "
-FROM User
-WHERE User.Name =" . $user;
-
-$statement = $pdo->query($query);
-$sessions = $statement->fetchAll();
- */
-//header ('location: reservation.php');
+header ('location: reservation.php');
