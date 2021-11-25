@@ -26,6 +26,9 @@ if (isset($_POST['user_login'])){
         echo "Votre identifiant ou votre mot de passe est incorrect.";
     }
 }
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -98,13 +101,15 @@ if (isset($_POST['user_login'])){
                 </span>
             </form>
           </li>
-
           <li class="nav-item">
             <form class="d-flex">
-              <button type='button' class="btn secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Se connecter</button>
+              <?php if (!isset($_SESSION['user_login'])) { ?>
+                <button type='button' class="btn secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Se connecter</button>
+              <?php } else { ?>
+                <a href="logout.php"><button type='button' class="btn secondary">Se déconnecter</button></a>
+              <?php } ?>
             </form>
           </li>
-
           <li class="nav-item">
             <i class="bi bi-cart"></i>
             <a class="cart" href="cart.php">
