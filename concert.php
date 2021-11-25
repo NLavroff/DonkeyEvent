@@ -21,13 +21,12 @@ require_once 'header.php';
         date_default_timezone_set('Europe/Paris');
         $currentDate = date("Y-m-d H:i:s");
 
-        $query = "SELECT cover, Event.name as event, Event.description as description, Artist.name as artist 
+        $query = "SELECT idEvent, cover, Event.name as event, Event.description as description, Artist.name as artist 
 FROM Event
     JOIN Session ON idEvent = Event_idEvent
     JOIN Performance ON Performance.Event_idEvent = Event.idEvent
     JOIN Artist ON Artist_idArtist = idArtist 
-WHERE DATE(Session.date) >= '$currentDate' AND Genre_idGenre = 4
-";
+WHERE DATE(Session.date) >= '$currentDate' AND Genre_idGenre = 4";
 
         $statement = $pdo->prepare($query);
         $statement->execute();
