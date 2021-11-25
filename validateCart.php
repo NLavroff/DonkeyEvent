@@ -27,7 +27,9 @@ foreach ($_SESSION["cartItems"] as $session) {
     }
 
     $query = "INSERT INTO Reservation
-    VALUES ($idUser, $idSession, $ticketsQuantity, $insurance)";
+    VALUES ($idUser, $idSession, $ticketsQuantity, $insurance)
+    ON DUPLICATE KEY UPDATE ticketsQuantity = ticketsQuantity + $ticketsQuantity, insurance = insurance + $insurance
+    ";
     $pdo->exec($query);
 }
  
