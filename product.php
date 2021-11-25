@@ -1,7 +1,6 @@
 <?php
 
 require_once 'connec.php';
-require_once 'header.php';
 require_once 'index.html';
 
 const BR = '<br> <br>';
@@ -9,6 +8,8 @@ const BR = '<br> <br>';
 if (!isset($_GET['idEvent'])) {
     header('location: index.php');
 }
+
+require_once 'header.php';
 
 $idEvent = $_GET['idEvent'];
 $query = "SELECT * FROM Event WHERE idEvent =" . $idEvent;
