@@ -58,7 +58,8 @@ if (isset($_SESSION['cartItems'])) { ?>
                                     <th scope="col">Lieu</th>
                                     <th scope="col">Tarif</th>
                                     <th scope="col">Assurance anulation</th>
-                                    <th scope="col">Modifier la quantité</th>
+                                    <th scope="col">Quantité</th>
+                                    <th scope="col">Valider les modifications</th>
                                     <th scope="col"> Supprimer la réservation</th>
                                 </tr>
                                 <?php 
@@ -89,12 +90,13 @@ if (isset($_SESSION['cartItems'])) { ?>
                                                         for($j=1; $j<=$capacity && $j<=10; $j++) { ?>
                                                             <option <?php if ($sessionDetails["nbTickets"] == $j){ ?> selected="selected" <?php } ?> value=<?php echo $j ?>><?php echo $j ?></option>
                                                         <?php } ?>
-                                                    </select><input type="submit"></td>
+                                                    </select></td>
+                                                    <td><button class="btn btn-primary btn-sm btn-round" data-abc="true" type="submit">Valider</button></td>
                                                 </form>
                                                 <td class="text-right d-none d-md-block">
                                                     <form action="deleteFromCart.php" method="get">
                                                         <input type="hidden" name="idSession" value="<?php echo $sessionDetails["session"]; ?>" />
-                                                        <button class="btn btn-light btn-round" data-abc="true" type="submit" name="cancellation" value="TRUE">Supprimer</button>
+                                                        <button class="btn btn-danger btn-sm btn-round" data-abc="true" type="submit" name="cancellation" value="TRUE">Supprimer</button>
                                                     </form>
                                                 </td>
                                                 <?php $total += $sessionDetails["nbTickets"]*$sessionInfo[$i]['price'];
@@ -119,7 +121,9 @@ if (isset($_SESSION['cartItems'])) { ?>
                             <dd class="text-right text-dark b ml-3"><strong><?php echo $total ?> €</strong></dd>
                         </dl>
                         <hr>
-                        <a href="#" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Confirmer la réservation </a>
+                        <form action="validateCart.php">
+                            <button class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Confirmer la réservation </button>
+                        </form>
                         <a href="index.php" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Faire une autre réservation </a>
                     </div>
                 </div>
