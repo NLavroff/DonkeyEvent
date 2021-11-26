@@ -132,9 +132,9 @@ if (isset($_SESSION['cartItems'])) { ?>
                         <form action="validateCart.php">
                             <button <?php if (!isset($_SESSION['user_login'])) { ?>type='button' data-bs-toggle="modal" data-bs-target="#loginModal" <?php } ?> class="btn btn-out btn-primary btn-square btn-main" data-abc="true">
                                 Confirmer 
-                                <?php if (!isset($_POST['Cancellation'])) { ?>
+                                <?php if (!isset($_POST['cancellation'])) { ?>
                                     la réservation
-                                <?php } else if ($_POST['Cancellation']==TRUE) { ?>
+                                <?php } else if ($_POST['cancellation']==TRUE) { ?>
                                     l'annulation
                                 <?php } ?>
                             </button>

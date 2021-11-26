@@ -1,8 +1,6 @@
 <?php
 
 require_once 'connec.php';
-require_once 'index.html';
-require_once 'header.php';
 
 ?>
 <!-- A bit of style, to be removed when we develop the CSS part of the project -->

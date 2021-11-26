@@ -51,7 +51,7 @@ $query = "
 $statement = $pdo->query($query);
 $sessions = $statement->fetchAll();
 ?>
-
+  
 <div class="table-responsive">
 <table class="table table-hover">
     <thead class="thead-light">

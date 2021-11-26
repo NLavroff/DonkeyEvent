@@ -9,7 +9,7 @@ const BR = '<br> <br>';
 $userName = $_SESSION['user_login'];
 
 $query = "
-SELECT ticketsQuantity, Session.idSession as idSession, Session.capacity as capacity, Session.price as price, Session.date as date, Event.name as event
+SELECT insurance, ticketsQuantity, Session.idSession as idSession, Session.capacity as capacity, Session.price as price, Session.date as date, Event.name as event
 FROM Reservation
 JOIN Session ON Session_idSession = idSession
     JOIN Event ON Event_idEvent = idEvent
