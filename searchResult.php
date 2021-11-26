@@ -1,7 +1,6 @@
 <?php
 
 require_once 'connec.php';
-require_once 'index.html';
 require_once 'header.php';
 require_once 'research.php';
 
@@ -93,3 +92,6 @@ if ($statement->rowCount() > 0) {
 <?php } ?>
 </table>
 <br>
+
+<?php
+require_once 'footer.php';

@@ -143,3 +143,5 @@ if (isset($_SESSION['cartItems'])) { ?>
         </div>
     </div>
 <?php }
+
+require_once 'footer.php';
