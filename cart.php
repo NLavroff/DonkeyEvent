@@ -1,7 +1,6 @@
 <?php
 
 require_once 'connec.php';
-require_once 'index.html';
 require_once 'header.php';
 
 const BR = '<br> <br>';
@@ -82,7 +81,11 @@ if (isset($_SESSION['cartItems'])) { ?>
                                                 <form action="refreshCart.php" method="get">
                                                     <input type="hidden" name="idSession" value="<?php echo $sessionDetails["session"]; ?>" />
                                                     <td><div class="form-group form-check">
-                                                        <input type="checkbox" name="insurance" value="TRUE" class="form-check-input" id="exampleCheck1" <?php if ($sessionDetails["insurance"] == TRUE){ ?> checked <?php } ?>>
+                                                        <input type="checkbox" name="insurance" value="TRUE" class="form-check-input" id="exampleCheck1" 
+                                                        <?php if ($sessionDetails["insurance"] == TRUE || $_POST["insurance"] == TRUE) { ?>
+                                                            checked disabled>
+                                                            <input type="hidden" name="insurance" value="TRUE"
+                                                        <?php } ?>>
                                                     </div></td>
                                                     <td><select name="nbTickets">
                                                         <?php
@@ -105,7 +108,7 @@ if (isset($_SESSION['cartItems'])) { ?>
                                                 </td>
                                                 <?php
                                                 $total += $sessionDetails["nbTickets"]*$sessionInfo[$i]['price'];
-                                                if ($sessionDetails["insurance"]) {
+                                                if ($sessionDetails["insurance"] && 0<$sessionDetails["nbTickets"]) {
                                                     $total += $insurancePrice;
                                                 }
                                                 ?>
@@ -143,3 +146,5 @@ if (isset($_SESSION['cartItems'])) { ?>
         </div>
     </div>
 <?php }
+
+require_once 'footer.php';

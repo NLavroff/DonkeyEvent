@@ -3,7 +3,6 @@
 require_once 'loginRequired.php';
 require_once 'connec.php';
 require_once 'header.php';
-require_once 'index.html';
 
 const BR = '<br> <br>';
 
@@ -48,9 +47,12 @@ foreach ($reservations as $reservation) { ?>
         <td><?php echo $reservation['price']; ?></td>
         <td><?php echo $reservation['ticketsQuantity']; ?></td>
         <?php if ($currentDate >= $reservation['date']) { ?>
-            <td>Cette réservation n'est plus modifiable</td>
-            <td>Cette réservation n'est plus modifiable</td>
-        <?php } else { ?>
+            <td>Cet événement a déjà eu lieu</td>
+            <td>Cet événement a déjà eu lieu</td>
+        <?php } else if (0==$reservation['insurance']) { ?>
+            <td>Cette réservation n'est pas modifiable</td>
+            <td>Cette réservation n'est pas annulable</td>
+            <?php } else { ?>
             <td>
                 <form method="post" action="cart.php" name="cart">
                     <label for="nbTickets">Nouveau nombre de places : </label>
@@ -61,13 +63,15 @@ foreach ($reservations as $reservation) { ?>
                         <option <?php if ($reservation['ticketsQuantity'] == $i){ ?> selected="selected" <?php } ?> value=<?php echo $i-$reservation['ticketsQuantity'] ?>><?php echo $i ?></option>
                         <?php } ?>
                     </select>
+                    <input type="hidden" name="insurance" value="TRUE"/>
                     <input type="hidden" name="idSession" value="<?php echo $reservation["idSession"]; ?>" />
                     <button type="submit">Modifier</button>
                 </form>
             </td>
             <td>
                 <form method="post" action="cart.php" name="cart">
-                    <input type="hidden" name="Cancellation" value="TRUE"/>
+                    <input type="hidden" name="insurance" value="TRUE"/>
+                    <input type="hidden" name="cancellation" value="TRUE"/>
                     <input type="hidden" name="nbTickets" value="<?php echo -$reservation['ticketsQuantity']; ?>" />
                     <input type="hidden" name="idSession" value="<?php echo $reservation["idSession"]; ?>" />
                     <button type="submit">Annuler cette réservation</button>
@@ -77,10 +81,6 @@ foreach ($reservations as $reservation) { ?>
     </tr>
 <?php } ?>
 </table>
-<!-- 
-rendre des places seulement si assurance
-gérer l'affichage de quantités négatives dans le panier => changer la phrase et afficher l'opposé
-    => impossible de gérer les quanntités négatives en get via le panier, on pourrait revendre des places qu'on ne possède pas
-        => on peut potentiellement acheter plus de place que la capacité de l'envent =>>> il faut tout passer en post :/
-gérér le zéro
-l'annulation doit passer par un autre formulaire -->
+
+<?php
+require_once 'footer.php';
