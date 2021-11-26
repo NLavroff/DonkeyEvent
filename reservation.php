@@ -3,7 +3,6 @@
 require_once 'loginRequired.php';
 require_once 'connec.php';
 require_once 'header.php';
-require_once 'index.html';
 
 const BR = '<br> <br>';
 
@@ -82,3 +81,6 @@ foreach ($reservations as $reservation) { ?>
     </tr>
 <?php } ?>
 </table>
+
+<?php
+require_once 'footer.php';
