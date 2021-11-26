@@ -101,16 +101,19 @@ a {
 }
 
 .btn-light {
-  color: #ffffff;
-  background-color: #F44336;
-  border-color: #f8f9fa;
+  color: #161B33;
+  background-color: #A69CAC;
+  border-color: #161B33;
   font-size: 12px;
+  margin-top: 20px;
+  border-radius: 0%;
 }
 
 .btn-light:hover {
-  color: #ffffff;
-  background-color: #F44336;
-  border-color: #F44336;
+  color: #F1DAC4;
+  background-color: #474973;
+  border-color: #474973;
+  margin-top: 20px;
 }
 
 .btn-apply {
@@ -143,55 +146,35 @@ a {
   border: 2px solid #161B33;
 }
 
-header {
-  position: relative;
-  background-color: black;
-  height: 75vh;
-  min-height: 25rem;
+.col {
+  text-align: justify;
+}
+
+.bgimage-concert {
   width: 100%;
-  overflow: hidden;
+  height: 500px;
+  background: url("https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  justify-content: center;
 }
 
-header video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: 0;
-  -ms-transform: translateX(-50%) translateY(-50%);
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
+.space {
+  margin: 100px;
 }
 
-header .container {
-  position: relative;
-  z-index: 2;
+.col-5 {
+  margin-left: 60px;
 }
 
-header .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0.5;
-  z-index: 1;
+.col {
+  margin-top: 20px;
 }
 
-.img-genre {
-  position: relative;
-}
-
-.genre {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 50px;
+.btn-position-right {
+  text-align: right;
 }
 
 .genre-section {
@@ -209,5 +192,9 @@ header .overlay {
 
 }
 
-
+@media (max-width: 600px) {
+  .space {
+    margin: 30px;
+  }
+}
 /*# sourceMappingURL=style.css.map */
