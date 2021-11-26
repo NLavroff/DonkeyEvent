@@ -52,13 +52,13 @@ foreach ($reservations as $reservation) { ?>
             <td>Cette réservation n'est plus modifiable</td>
         <?php } else { ?>
             <td>
-                <form method="GET" action="cart.php" name="cart">
+                <form method="post" action="cart.php" name="cart">
                     <label for="nbTickets">Nouveau nombre de places : </label>
                     <select name="nbTickets">
                         <?php
                         $capacity = (int) $reservation['capacity'];
                         for($i=1; $i<=$capacity && $i<=10; $i++) { ?>
-                        <option value=<?php echo $i ?>><?php echo $i ?></option>
+                        <option <?php if ($reservation['ticketsQuantity'] == $i){ ?> selected="selected" <?php } ?> value=<?php echo $i-$reservation['ticketsQuantity'] ?>><?php echo $i ?></option>
                         <?php } ?>
                     </select>
                     <input type="hidden" name="idSession" value="<?php echo $reservation["idSession"]; ?>" />
@@ -66,8 +66,9 @@ foreach ($reservations as $reservation) { ?>
                 </form>
             </td>
             <td>
-                <form method="GET" action="cart.php" name="cart">
-                    <input type="hidden" name="Cancellation" value="TRUE" />
+                <form method="post" action="cart.php" name="cart">
+                    <input type="hidden" name="Cancellation" value="TRUE"/>
+                    <input type="hidden" name="nbTickets" value="<?php echo -$reservation['ticketsQuantity']; ?>" />
                     <input type="hidden" name="idSession" value="<?php echo $reservation["idSession"]; ?>" />
                     <button type="submit">Annuler cette réservation</button>
                 </form>
@@ -76,3 +77,10 @@ foreach ($reservations as $reservation) { ?>
     </tr>
 <?php } ?>
 </table>
+<!-- 
+rendre des places seulement si assurance
+gérer l'affichage de quantités négatives dans le panier => changer la phrase et afficher l'opposé
+    => impossible de gérer les quanntités négatives en get via le panier, on pourrait revendre des places qu'on ne possède pas
+        => on peut potentiellement acheter plus de place que la capacité de l'envent =>>> il faut tout passer en post :/
+gérér le zéro
+l'annulation doit passer par un autre formulaire -->
