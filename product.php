@@ -1,7 +1,6 @@
 <?php
 
 require_once 'connec.php';
-require_once 'index.html';
 
 const BR = '<br> <br>';
 
@@ -101,4 +100,3 @@ $sessions = $statement->fetchAll();
 
 <?php
 require_once 'footer.php';
-?>
