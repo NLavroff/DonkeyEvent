@@ -130,6 +130,8 @@ a {
 
 .bi.bi-cart { //icon cart
     color : $primary-color;
+    size : 20px;
+    margin : 10px;
 }
 
 :hover.ms-n5 {
@@ -147,7 +149,8 @@ a {
 .fa.fa-search { // icon search
     padding : 0px;
     margin: 0px;
-    font-size: 20px; 
+    font-size: 20px;
+    margin-right: 10px;
 }
 
 .col {
@@ -180,6 +183,10 @@ a {
 
 .btn-position-right {
     text-align: right;
+}
+
+.btn.btn-outline-secondary {
+    margin-right: 20px;
 }
 
 header {
@@ -277,5 +284,7 @@ thead  {
     .space {
         margin : 30px;
     }
-    
+    .bi.bi-cart {
+        margin: 0px;
+    }
 }
