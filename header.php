@@ -1,7 +1,6 @@
 <?php
 
 require_once 'connec.php';
-require_once 'index.html';
 
 if (session_status() === PHP_SESSION_NONE) {
   session_start();
@@ -34,19 +33,21 @@ if (isset($_POST['user_login'])){
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-  <!-- social media icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="login.css">
-  <link rel="stylesheet" href="footer.css">
-  <title>Donkey Event</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="DonkeyEvent - Toutes vos sorties à portée de clic">
+    <meta name="description" content="Un concert, un ciné, une pièce de théâtre. À vous de sortir !">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+    <!-- social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="footer.css">
+    <title>Donkey Event</title>
 </head>
 
 <body>
@@ -106,7 +107,16 @@ if (isset($_POST['user_login'])){
               <?php if (!isset($_SESSION['user_login'])) { ?>
                 <button type='button' class="btn secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Se connecter</button>
               <?php } else { ?>
-                <a href="logout.php"><button type='button' class="btn secondary">Se déconnecter</button></a>
+                <div class="dropdown">
+                  <button class="btn secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Mon compte
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="reservation.php"><button type='button' class="btn secondary">Mes réservations</button></a></li>
+                    <div class="dropdown-divider"></div>
+                    <li><a class="dropdown-item" href="logout.php"><button type='button' class="btn secondary">Se déconnecter</button></a></li>
+                  </ul>
+                </div>
               <?php } ?>
             </form>
           </li>
@@ -121,32 +131,27 @@ if (isset($_POST['user_login'])){
   </nav>
 
 <!-- Modal -->
-<div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content ">
-      <div class="modal-header">
-        <h2 class="modal-title" id="exampleModalLabel">DonkeyEvent</h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body text-center">
-        <img src="medias/login.jpg" class="card-img-top" alt="crowd in concert" style="width: 20rem;">
-        <form method="post">
-            <div class="col-sm-12">
-                <input type="text" id="login" name="user_login" placeholder="Identifiant">
+  <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content ">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">DonkeyEvent</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <img src="medias/login.jpg" class="card-img-top" alt="crowd in concert" style="width: 20rem;">
+          <form method="post">
+              <div class="col-sm-12">
+                  <input type="text" id="login" name="user_login" placeholder="Identifiant">
+              </div>
+              <div class="col-sm-12">
+                  <input type="password" id="password" name="user_password" placeholder="Mot de passe">
+              </div>
             </div>
-            <div class="col-sm-12">
-                <input type="password" id="password" name="user_password" placeholder="Mot de passe">
-            </div>
-          </div>
-          <div class="modal-footer">
-          <button class="btn btn-secondary" type="submit">CONNEXION</button>
-        </form>
+            <div class="modal-footer">
+            <button class="btn btn-secondary" type="submit">CONNEXION</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
-
-</html>
