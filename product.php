@@ -31,11 +31,13 @@ $currentDate = date("Y-m-d H:i:s");
         <h1><?php echo $event['name']; ?></h1>
     </div>
     <div class="row">
-        <?php echo $event['description']; ?>
+        <p><?php echo $event['description']; ?></p>
     </div>
 <?php } ?>
 
+<div class="row">
 <h4>Réserver un spectacle</h4>
+</div>
 
 <?php
 $query = "
@@ -69,7 +71,7 @@ $sessions = $statement->fetchAll();
             <?php
             foreach ($sessions as $session) { ?>
                 <th scope="row"><?php echo $session['event']; ?></td>
-                <td><?php setlocale(LC_ALL, 'fr_FR'); echo date('j m Y  - H:i', strtotime($session['date'])); ?></td>
+                <td><?php setlocale(LC_ALL, 'fr_FR'); echo date('j/m/Y  - H:i', strtotime($session['date'])); ?></td>
                 <td><?php echo $session['city']; ?></td>
                 <td><?php echo $session['venue']; ?></td>
                 <td><?php echo $session['price']; ?>€</td>
