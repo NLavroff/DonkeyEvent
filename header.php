@@ -51,7 +51,7 @@ if (isset($_POST['user_login'])){
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.php">DonkeyEvent</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,7 +105,7 @@ if (isset($_POST['user_login'])){
           <li class="nav-item">
             <form class="d-flex">
               <?php if (!isset($_SESSION['user_login'])) { ?>
-                <button type='button' class="btn secondary" data-bs-toggle="modal" data-bs-target="#loginModal">Se connecter</button>
+                <button type='button' class="btn secondary-login" data-bs-toggle="modal" data-bs-target="#loginModal">Se connecter</button>
               <?php } else { ?>
                 <div class="dropdown">
                   <button class="btn secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

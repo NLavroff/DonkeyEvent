@@ -121,6 +121,8 @@ a {
 
 .bi.bi-cart {
   color: #0D0C1D;
+  size: 20px;
+  margin: 10px;
 }
 
 :hover.ms-n5 {
@@ -139,6 +141,7 @@ a {
   padding: 0px;
   margin: 0px;
   font-size: 20px;
+  margin-right: 10px;
 }
 
 .border {
@@ -174,6 +177,10 @@ a {
 
 .btn-position-right {
   text-align: right;
+}
+
+.btn.btn-outline-secondary {
+  margin-right: 20px;
 }
 
 header {
@@ -258,6 +265,10 @@ header .overlay {
 @media (max-width: 600px) {
   .space {
     margin: 30px;
+  }
+
+  .bi.bi-cart {
+    margin: 0px;
   }
 }
 
