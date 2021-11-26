@@ -21,6 +21,7 @@ if (isset($_POST['user_login'])){
       echo "Votre identifiant est inconnu.";
     } else if (password_verify($userPassword,$row["Password"])) {
         $_SESSION["user_login"] = $userLogin;
+        header ("location: index.php");
     } else {
         echo "Votre mot de passe est incorrect.";
     }
