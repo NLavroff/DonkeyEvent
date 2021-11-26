@@ -177,10 +177,24 @@ a {
   text-align: right;
 }
 
+.genre-section {
+  font-size: 18px;
+}
+
+.genre-section h2 {
+  color: white;
+  font-size: 50px;
+}
+
+.genre-section h2:hover {
+  color: white;
+  font-size: 70px;
+
+}
+
 @media (max-width: 600px) {
   .space {
     margin: 30px;
   }
 }
-
 /*# sourceMappingURL=style.css.map */
