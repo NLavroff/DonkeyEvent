@@ -10,7 +10,7 @@ const BR = '<br> <br>';
 $userName = $_SESSION['user_login'];
 
 $query = "
-SELECT ticketsQuantity, Session.idSession as idSession, Session.capacity as capacity, Session.price as price, Session.date as date, Event.name as event
+SELECT insurance, ticketsQuantity, Session.idSession as idSession, Session.capacity as capacity, Session.price as price, Session.date as date, Event.name as event
 FROM Reservation
 JOIN Session ON Session_idSession = idSession
     JOIN Event ON Event_idEvent = idEvent
@@ -48,9 +48,12 @@ foreach ($reservations as $reservation) { ?>
         <td><?php echo $reservation['price']; ?></td>
         <td><?php echo $reservation['ticketsQuantity']; ?></td>
         <?php if ($currentDate >= $reservation['date']) { ?>
-            <td>Cette réservation n'est plus modifiable</td>
-            <td>Cette réservation n'est plus modifiable</td>
-        <?php } else { ?>
+            <td>Cet événement a déjà eu lieu</td>
+            <td>Cet événement a déjà eu lieu</td>
+        <?php } else if (0==$reservation['insurance']) { ?>
+            <td>Cette réservation n'est pas modifiable</td>
+            <td>Cette réservation n'est pas annulable</td>
+            <?php } else { ?>
             <td>
                 <form method="post" action="cart.php" name="cart">
                     <label for="nbTickets">Nouveau nombre de places : </label>
