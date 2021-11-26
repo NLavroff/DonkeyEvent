@@ -194,5 +194,20 @@ header .overlay {
   font-size: 50px;
 }
 
+.genre-section {
+  font-size: 18px;
+}
+
+.genre-section h2 {
+  color: white;
+  font-size: 50px;
+}
+
+.genre-section h2:hover {
+  color: white;
+  font-size: 70px;
+
+}
+
 
 /*# sourceMappingURL=style.css.map */
