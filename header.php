@@ -7,16 +7,18 @@ if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
 
-if (isset($_POST['user_login'])) {
-  $userLogin = trim($_POST['user_login']);
-  $userPassword = trim($_POST['user_password']);
+if (isset($_POST['user_login'])){
+    $userLogin = trim($_POST['user_login']);
+    $userPassword = trim($_POST['user_password']);
+    
+    $query = "SELECT * FROM User WHERE User.Name = :login";
 
-  $query = "SELECT * FROM User WHERE User.Name = :login";
+    $statement = $pdo ->prepare($query);
 
-  $statement = $pdo->prepare($query);
+    $statement->bindValue(':login', $userLogin, PDO::PARAM_STR);
+    $statement->execute();
 
-  $statement->bindValue(':login', $userLogin, PDO::PARAM_STR);
-  $statement->execute();
+    $row = $statement->fetch(PDO::FETCH_ASSOC);
 
     if(password_verify($userPassword,$row["Password"])) {
         $_SESSION["user_login"] = $userLogin;
@@ -92,6 +94,7 @@ if (isset($_POST['user_login'])) {
                 <input class="form-control border-start-0 border-end-0 border-top-0 border" type="text" placeholder="Rechercher..." name="search" value="<?php if (isset($_GET["search"])) {
                                                                                                                                                             echo $_GET["search"];
                                                                                                                                                           } ?>">
+
                 <span class="input-group-append">
                   <button class="btn btn-outline-secondary bg-white border-start-0 border-end-0 border-top-0 border ms-n5" type="submit">
                     <i class="fa fa-search"></i>
@@ -111,7 +114,7 @@ if (isset($_POST['user_login'])) {
           <li class="nav-item">
             <i class="bi bi-cart"></i>
             <a class="cart" href="cart.php">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
                 <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
               </svg></a>
           </li>
@@ -130,19 +133,19 @@ if (isset($_POST['user_login'])) {
         <img src="medias/login.jpg" class="card-img-top" alt="crowd in concert" style="width: 20rem;">
         <form method="post">
             <div class="col-sm-12">
-              <input type="text" id="login" name="user_login" placeholder="Identifiant">
+                <input type="text" id="login" name="user_login" placeholder="Identifiant">
             </div>
             <div class="col-sm-12">
                 <input type="password" id="password" name="user_password" placeholder="Mot de passe">
             </div>
-        </div>
-        <div class="modal-footer">
+          </div>
+          <div class="modal-footer">
           <button class="btn btn-secondary" type="submit">CONNEXION</button>
-          </form>
-        </div>
+        </form>
       </div>
     </div>
   </div>
+</div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
