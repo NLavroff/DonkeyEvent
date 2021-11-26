@@ -17,6 +17,7 @@ body {
     font-size: 14px
 }
 
+//css cart
 .card-body {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
@@ -127,7 +128,7 @@ a {
     font-size: 11px
 }
 
-.bi.bi-cart {
+.bi.bi-cart { //icon cart
     color : $primary-color;
 }
 
@@ -135,21 +136,18 @@ a {
     color :$links-color;
 }
 
-.ms-n5 {
+.ms-n5 { 
     height:40px;
 }
+
 .form-control.border-end-0.border {
     height : 40px;
 }
 
-.fa.fa-search {
+.fa.fa-search { // icon search
     padding : 0px;
     margin: 0px;
     font-size: 20px; 
-}
-
-.border {
-    border: 2px solid $bg-color;
 }
 
 .col {
@@ -250,11 +248,21 @@ header .overlay {
 }
 
 .table {
-    background-color: $btn-color;
+    background-color: #F8F9FA;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 18px;
+}
+
+.thead-light {
+    background-color: $links-color;
+}
+
+thead  {
+    color : $secundary-color;
 }
 
 .form-select {
-    width : 125px;
+    width : 123px;
     background-color: $secundary-color;
     border-radius: 0%;
 }
