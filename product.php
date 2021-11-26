@@ -81,7 +81,7 @@ $sessions = $statement->fetchAll();
             <td>Cet événement est passé</td>
         <?php } else { ?>
             <td>
-                <form method="GET" action="cart.php" name="cart">
+                <form method="post" action="cart.php" name="cart">
                     <label for="nbTickets">Nombre de places : </label>
                     <select name="nbTickets">
                         <?php

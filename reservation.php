@@ -52,7 +52,7 @@ foreach ($reservations as $reservation) { ?>
             <td>Cette réservation n'est plus modifiable</td>
         <?php } else { ?>
             <td>
-                <form method="GET" action="cart.php" name="cart">
+                <form method="post" action="cart.php" name="cart">
                     <label for="nbTickets">Nouveau nombre de places : </label>
                     <select name="nbTickets">
                         <?php
@@ -66,7 +66,7 @@ foreach ($reservations as $reservation) { ?>
                 </form>
             </td>
             <td>
-                <form method="GET" action="cart.php" name="cart">
+                <form method="post" action="cart.php" name="cart">
                     <input type="hidden" name="Cancellation" value="TRUE"/>
                     <input type="hidden" name="nbTickets" value="<?php echo -$reservation['ticketsQuantity']; ?>" />
                     <input type="hidden" name="idSession" value="<?php echo $reservation["idSession"]; ?>" />

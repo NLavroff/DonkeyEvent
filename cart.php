@@ -13,20 +13,20 @@ if (empty($_SESSION['cartItems'])) {
     $_SESSION['cartItems'] = [];
 }
 
-if (!empty($_GET)) {
-    $idSession = $_GET['idSession'];
-    if (isset($_GET['nbTickets'])) {
-        $nbTickets = $_GET['nbTickets'];
+if (!empty($_POST)) {
+    $idSession = $_POST['idSession'];
+    if (isset($_POST['nbTickets'])) {
+        $nbTickets = $_POST['nbTickets'];
     } else {
         $nbTickets = 1;
     }
-    if (isset($_GET['insurance'])) {
-        $insurance = $_GET['insurance'];
+    if (isset($_POST['insurance'])) {
+        $insurance = $_POST['insurance'];
     } else {
         $insurance = FALSE;
     }
-    if (isset($_GET['cancellation'])) {
-        $cancellation = $_GET['cancellation'];
+    if (isset($_POST['cancellation'])) {
+        $cancellation = $_POST['cancellation'];
     } else {
         $cancellation = FALSE;
     }
@@ -129,9 +129,9 @@ if (isset($_SESSION['cartItems'])) { ?>
                         <form action="validateCart.php">
                             <button <?php if (!isset($_SESSION['user_login'])) { ?>type='button' data-bs-toggle="modal" data-bs-target="#loginModal" <?php } ?> class="btn btn-out btn-primary btn-square btn-main" data-abc="true">
                                 Confirmer 
-                                <?php if (!isset($_GET['Cancellation'])) { ?>
+                                <?php if (!isset($_POST['Cancellation'])) { ?>
                                     la réservation
-                                <?php } else if ($_GET['Cancellation']==TRUE) { ?>
+                                <?php } else if ($_POST['Cancellation']==TRUE) { ?>
                                     l'annulation
                                 <?php } ?>
                             </button>
