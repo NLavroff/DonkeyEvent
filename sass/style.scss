@@ -7,7 +7,6 @@ $bg-color: #161B33;
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 body, h1 {
-    background: $bg-color;
     color: $secundary-color;
 	margin-top: 20px;
 }
@@ -109,16 +108,19 @@ a {
 }
 
 .btn-light {
-    color: #ffffff;
-    background-color: #F44336;
-    border-color: #f8f9fa;
-    font-size: 12px
+    color: $bg-color;
+    background-color:$btn-color;
+    border-color: $bg-color;
+    font-size: 12px;
+    margin-top: 20px;
+    border-radius: 0%;
 }
 
 .btn-light:hover {
-    color: #ffffff;
-    background-color: #F44336;
-    border-color: #F44336
+    color: $secundary-color;
+    background-color: $links-color;
+    border-color: $links-color;
+    margin-top: 20px;
 }
 
 .btn-apply {
@@ -143,10 +145,49 @@ a {
 .fa.fa-search {
     padding : 0px;
     margin: 0px;
-    font-size: 20px;
-   
+    font-size: 20px; 
 }
 
 .border {
     border: 2px solid $bg-color;
+}
+
+.col {
+    text-align: justify;
+}
+
+.bgimage-concert {
+    width:100%;
+    height:500px;
+    background: url('https://images.pexels.com/photos/1763075/pexels-photo-1763075.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    background-attachment: fixed;
+    justify-content: center;
+ }
+
+.space {
+    margin : 100px;
+}
+
+.col-5 {
+
+    margin-left: 60px;
+}
+
+.col {
+    margin-top: 20px;
+}
+
+.btn-position-right {
+    text-align: right;
+}
+
+@media (max-width: 600px) {
+    
+    .space {
+        margin : 30px;
+    }
+
 }

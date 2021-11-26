@@ -1,7 +1,6 @@
 <?php
 
 require_once 'connec.php';
-require_once 'header.php';
 require_once 'index.html';
 
 const BR = '<br> <br>';
@@ -9,6 +8,8 @@ const BR = '<br> <br>';
 if (!isset($_GET['idEvent'])) {
     header('location: index.php');
 }
+
+require_once 'header.php';
 
 $idEvent = $_GET['idEvent'];
 $query = "SELECT * FROM Event WHERE idEvent =" . $idEvent;
@@ -81,7 +82,7 @@ $sessions = $statement->fetchAll();
             <td>Cet événement est passé</td>
         <?php } else { ?>
             <td>
-                <form method="GET" action="cart.php" name="cart">
+                <form method="post" action="cart.php" name="cart">
                     <label for="nbTickets">Nombre de places : </label>
                     <select name="nbTickets">
                         <?php
