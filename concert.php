@@ -36,21 +36,21 @@ WHERE DATE(Session.date) >= '$currentDate' AND Genre_idGenre = 4";
         <?php $concerts = array_map("unserialize", array_unique(array_map("serialize", $concerts))); ?>
         <?php foreach ($concerts as $concert) { ?>
             <div class="container-fluid">
-                <div class="row row-cols-2">
-                    <div class="col">
+                <div class="row">
+                    <div class="col-sm">
                         <img src="Cover/<?php echo $concert['cover']; ?>" class="img-fluid">
                     </div>
-                    <div class="col">
+                    <div class="col col-lg-5">
                         <h1><?php echo $concert['event']; ?></h1>
-                        <div class="row">
-                            <div class="col">
+                        <div class="row-sm">
+                            <div class="col-sm">
                                 <?php echo $concert['description']; ?>
                             </div>
                         </div>
                         <div class="col">
-                            <form method="GET" action="product.php" name="product">
+                            <form class="btn-position-right" method="GET" action="product.php" name="product">
                                 <input type="hidden" name="idEvent" value="<?php echo $concert["idEvent"];?>" />
-                                <button type="submit">En savoir plus</button>
+                                <button type="submit" class="btn btn-light">En savoir plus</button>
                             </form>
                         </div>
                     </div>

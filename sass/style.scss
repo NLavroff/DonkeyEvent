@@ -108,16 +108,19 @@ a {
 }
 
 .btn-light {
-    color: #ffffff;
-    background-color: #F44336;
-    border-color: #f8f9fa;
-    font-size: 12px
+    color: $bg-color;
+    background-color:$btn-color;
+    border-color: $bg-color;
+    font-size: 12px;
+    margin-top: 20px;
+    border-radius: 0%;
 }
 
 .btn-light:hover {
-    color: #ffffff;
-    background-color: #F44336;
-    border-color: #F44336
+    color: $secundary-color;
+    background-color: $links-color;
+    border-color: $links-color;
+    margin-top: 20px;
 }
 
 .btn-apply {
@@ -168,13 +171,23 @@ a {
     margin : 100px;
 }
 
-.text-center {
-    margin-top : 250px;
+.col-5 {
+
+    margin-left: 60px;
+}
+
+.col {
+    margin-top: 20px;
+}
+
+.btn-position-right {
+    text-align: right;
 }
 
 @media (max-width: 600px) {
-    .row {
-        display: flex;
-        flex-direction: column;
+    
+    .space {
+        margin : 30px;
     }
+
 }
