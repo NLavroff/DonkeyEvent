@@ -184,6 +184,11 @@ a {
     text-align: right;
 }
 
+.table {
+    background-color: $btn-color;
+    overflow-y: hidden;
+}
+
 @media (max-width: 600px) {
     
     .space {

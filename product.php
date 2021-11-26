@@ -26,8 +26,7 @@ $currentDate = date("Y-m-d H:i:s");
         <?php foreach ($events as $event) { ?>
     </div>
     <div class="row">
-        <?php echo $event['cover']; ?>
-        Cover
+        <img src="Cover/<?php echo $event['cover']; ?>">
     </div>
     <div class="row">
         <h1><?php echo $event['name']; ?></h1>
@@ -36,13 +35,8 @@ $currentDate = date("Y-m-d H:i:s");
         <?php echo $event['description']; ?>
     </div>
 <?php } ?>
-</div>
 
-<div class="container">
-    <div class="row">
-        <h4>Réserver un spectacle</h4>
-    </div>
-</div>
+<h4>Réserver un spectacle</h4>
 
 <?php
 $query = "
@@ -59,43 +53,54 @@ $statement = $pdo->query($query);
 $sessions = $statement->fetchAll();
 ?>
 
-<table>
-    <tr>
-        <th>Nom</th>
-        <th>Catégorie</th>
-        <th>Date</th>
-        <th>Ville</th>
-        <th>Salle</th>
-        <th>Tarif</th>
-        <th>Réserver</th>
-    </tr>
-    <tr>
-    <?php
-    foreach ($sessions as $session) { ?>
-        <td><?php echo $session['event']; ?></td>
-        <td><?php echo $session['genre']; ?></td>
-        <td><?php echo $session['date']; ?></td>
-        <td><?php echo $session['city']; ?></td>
-        <td><?php echo $session['venue']; ?></td>
-        <td><?php echo $session['price']; ?>€</td>
-        <?php if ($currentDate >= $session['date']) { ?>
-            <td>Cet événement est passé</td>
-        <?php } else { ?>
-            <td>
-                <form method="post" action="cart.php" name="cart">
-                    <label for="nbTickets">Nombre de places : </label>
-                    <select name="nbTickets">
-                        <?php
-                        $capacity = (int) $session['capacity'];
-                        for($i=1; $i<=$capacity && $i<=10; $i++) { ?>
-                        <option value=<?php echo $i ?>><?php echo $i ?></option>
-                        <?php } ?>
-                    </select>
-                    <input type="hidden" name="idSession" value="<?php echo $session["idSession"]; ?>" />
-                    <button type="submit">Ajouter au panier</button>
-                </form>
-            </td>
-        <?php } ?>
-    </tr>
-<?php } ?>
+<div class="table-responsive">
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Catégorie</th>
+            <th scope="col">Date</th>
+            <th scope="col">Ville</th>
+            <th scope="col">Salle</th>
+            <th scope="col">Tarif</th>
+            <th scope="col">Réserver</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <?php
+            foreach ($sessions as $session) { ?>
+                <th scope="row"><?php echo $session['event']; ?></td>
+                <td><?php echo $session['genre']; ?></td>
+                <td><?php echo $session['date']; ?></td>
+                <td><?php echo $session['city']; ?></td>
+                <td><?php echo $session['venue']; ?></td>
+                <td><?php echo $session['price']; ?>€</td>
+                <?php if ($currentDate >= $session['date']) { ?>
+                    <td>Cet événement est passé</td>
+                <?php } else { ?>
+                    <td>
+                        <form method="post" action="cart.php" name="cart">
+                            <label for="nbTickets">Nombre de places : </label>
+                            <select name="nbTickets">
+                                <?php
+                                $capacity = (int) $session['capacity'];
+                                for ($i = 1; $i <= $capacity && $i <= 10; $i++) { ?>
+                                    <option value=<?php echo $i ?>><?php echo $i ?></option>
+                                <?php } ?>
+                            </select>
+                            <input type="hidden" name="idSession" value="<?php echo $session["idSession"]; ?>" />
+                            <button type="submit">Ajouter au panier</button>
+                        </form>
+                    </td>
+                <?php } ?>
+        </tr>
+    <?php } ?>
+    </tbody>
 </table>
+</div>
+</div>
+
+<?php
+require_once 'footer.php';
+?>

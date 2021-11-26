@@ -177,6 +177,11 @@ a {
   text-align: right;
 }
 
+.table {
+  background-color: #A69CAC;
+  overflow-y: hidden;
+}
+
 @media (max-width: 600px) {
   .space {
     margin: 30px;
