@@ -6,16 +6,14 @@ require_once 'header.php';
 ?>
 
 <section class="bgimage-concert">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="text-center">
-                <h1>CONCERTS</h1>
-            </div>
+    <div class="container">
+        <div class="centered">
+            <h1>CONCERTS</h1>
         </div>
     </div>
 </section>
 
-<div class="space"><div>
+<div class="space"></div>
 
         <?php
         date_default_timezone_set('Europe/Paris');
@@ -37,13 +35,14 @@ WHERE DATE(Session.date) >= '$currentDate' AND Genre_idGenre = 4";
         <?php foreach ($concerts as $concert) { ?>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm">
+                <div class="col-2"></div>
+                    <div class="col-lg-4">
                         <img src="Cover/<?php echo $concert['cover']; ?>" class="img-fluid">
                     </div>
-                    <div class="col col-lg-5">
+                    <div class="event col col-lg-4">
                         <h1><?php echo $concert['event']; ?></h1>
-                        <div class="row-sm">
-                            <div class="col-sm">
+                        <div class="row">
+                            <div class="col">
                                 <?php echo $concert['description']; ?>
                             </div>
                         </div>
@@ -56,6 +55,8 @@ WHERE DATE(Session.date) >= '$currentDate' AND Genre_idGenre = 4";
                     </div>
                 </div>
             </div>
-            <div class="space"><div>
+        <div class="space"></div>
+
         <?php }
+        
         require_once 'footer.php';

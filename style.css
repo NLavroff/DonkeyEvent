@@ -156,7 +156,6 @@ a {
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  justify-content: center;
 }
 
 .space {
@@ -235,13 +234,21 @@ header .overlay {
 }
 
 .genre-section h2 {
-  color: white;
+  color: #F1DAC4;
   font-size: 50px;
 }
 
-.genre-section h2:hover {
+.genre-section h2:hover, .centered h1:hover {
   color: white;
   font-size: 70px;
+}
+
+.centered h1 {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
 }
 
 .table {
@@ -268,6 +275,15 @@ thead {
   color: #be3333;
 }
 
+.footer {
+  margin-top: 50px;
+  background-color: #0D0C1D;
+}
+
+.event {
+  margin-left: 50px;
+}
+
 @media (max-width: 600px) {
   .space {
     margin: 30px;
@@ -275,6 +291,14 @@ thead {
 
   .bi.bi-cart {
     margin: 0px;
+  }
+
+  .centered h1 {
+    top: 35%;
+  }
+
+  .event {
+    margin: auto;
   }
 }
 
