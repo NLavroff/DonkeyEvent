@@ -108,19 +108,19 @@ a {
 }
 
 .btn-light {
-    color: $bg-color;
-    background-color:$btn-color;
-    border-color: $bg-color;
-    font-size: 12px;
-    margin-top: 20px;
-    border-radius: 0%;
-}
-
-.btn-light:hover {
     color: $secundary-color;
     background-color: $links-color;
     border-color: $links-color;
-    margin-top: 20px;
+    font-size: 12px;    
+    border-radius: 0%;
+    margin-top: 10px;
+}
+
+.btn-light:hover {
+    color: $bg-color;
+    background-color: $links-color;
+    border-color: $bg-color;
+
 }
 
 .btn-apply {
@@ -251,7 +251,12 @@ header .overlay {
 
 .table {
     background-color: $btn-color;
-    overflow-y: hidden;
+}
+
+.form-select {
+    width : 125px;
+    background-color: $secundary-color;
+    border-radius: 0%;
 }
 
 @media (max-width: 600px) {
@@ -259,4 +264,5 @@ header .overlay {
     .space {
         margin : 30px;
     }
+    
 }

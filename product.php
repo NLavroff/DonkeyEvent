@@ -54,11 +54,10 @@ $sessions = $statement->fetchAll();
 ?>
 
 <div class="table-responsive">
-<table class="table table-striped table-hover">
-    <thead class="thead-dark">
+<table class="table table-hover">
+    <thead class="thead-light">
         <tr>
             <th scope="col">Nom</th>
-            <th scope="col">Catégorie</th>
             <th scope="col">Date</th>
             <th scope="col">Ville</th>
             <th scope="col">Salle</th>
@@ -71,8 +70,7 @@ $sessions = $statement->fetchAll();
             <?php
             foreach ($sessions as $session) { ?>
                 <th scope="row"><?php echo $session['event']; ?></td>
-                <td><?php echo $session['genre']; ?></td>
-                <td><?php echo $session['date']; ?></td>
+                <td><?php setlocale(LC_ALL, 'fr_FR'); echo date('j m Y  - H:i', strtotime($session['date'])); ?></td>
                 <td><?php echo $session['city']; ?></td>
                 <td><?php echo $session['venue']; ?></td>
                 <td><?php echo $session['price']; ?>€</td>
@@ -82,7 +80,7 @@ $sessions = $statement->fetchAll();
                     <td>
                         <form method="post" action="cart.php" name="cart">
                             <label for="nbTickets">Nombre de places : </label>
-                            <select name="nbTickets">
+                            <select name="nbTickets" class="form-select" >
                                 <?php
                                 $capacity = (int) $session['capacity'];
                                 for ($i = 1; $i <= $capacity && $i <= 10; $i++) { ?>
@@ -90,7 +88,7 @@ $sessions = $statement->fetchAll();
                                 <?php } ?>
                             </select>
                             <input type="hidden" name="idSession" value="<?php echo $session["idSession"]; ?>" />
-                            <button type="submit">Ajouter au panier</button>
+                            <button type="submit" class="btn btn-light">Ajouter au panier</button>
                         </form>
                     </td>
                 <?php } ?>
