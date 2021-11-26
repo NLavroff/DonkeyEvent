@@ -188,8 +188,7 @@ a {
 
 .genre-section h2:hover {
   color: white;
-  font-size: 70px;
-
+  font-size: 71px;
 }
 
 @media (max-width: 600px) {
@@ -197,4 +196,5 @@ a {
     margin: 30px;
   }
 }
+
 /*# sourceMappingURL=style.css.map */
