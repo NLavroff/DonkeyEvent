@@ -58,5 +58,4 @@ WHERE DATE(Session.date) >= '$currentDate' AND Genre_idGenre = 4";
             </div>
             <div class="space"><div>
         <?php }
-        require_once 'footer.php'
-        ?>
+        require_once 'footer.php';
