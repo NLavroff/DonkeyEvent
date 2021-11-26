@@ -141,10 +141,6 @@ a {
   font-size: 20px;
 }
 
-.border {
-  border: 2px solid #161B33;
-}
-
 .col {
   text-align: justify;
 }
@@ -242,11 +238,21 @@ header .overlay {
 }
 
 .table {
-  background-color: #A69CAC;
+  background-color: #F8F9FA;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 18px;
+}
+
+.thead-light {
+  background-color: #474973;
+}
+
+thead {
+  color: #F1DAC4;
 }
 
 .form-select {
-  width: 125px;
+  width: 123px;
   background-color: #F1DAC4;
   border-radius: 0%;
 }
