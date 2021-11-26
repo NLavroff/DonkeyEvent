@@ -1,8 +1,8 @@
 <?php
 
 require_once 'connec.php';
-require_once 'index.html';
 require_once 'header.php';
+
 ?>
 
 <section class="bgimage-concert">

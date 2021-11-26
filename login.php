@@ -1,8 +1,7 @@
 <?php
 
 require_once 'connec.php';
-require_once 'index.html';
-session_start();
+require_once 'header.php';
 
 if (isset($_POST['user_login'])){
     $userLogin = trim($_POST['user_login']);
@@ -21,7 +20,7 @@ if (isset($_POST['user_login'])){
       echo "Votre identifiant est inconnu.";
     } else if (password_verify($userPassword,$row["Password"])) {
         $_SESSION["user_login"] = $userLogin;
-        header ("location: index.php");
+        header("location: index.php");
     } else {
         echo "Votre mot de passe est incorrect.";
     }
@@ -39,7 +38,7 @@ if (isset($_POST['user_login'])){
                 <input type="text" id="login" name="user_login" placeholder="Identifiant">
             </div>
             <div class="col-sm-12">
-                <input type="text" id="password" name="user_password" placeholder="Mot de passe">
+                <input type="password" id="password" name="user_password" placeholder="Mot de passe">
             </div>
             <div class="col-sm-12">
                 <button class="btn btn-secondary" type="submit">CONNEXION</button>
