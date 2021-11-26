@@ -31,6 +31,9 @@ foreach ($_SESSION["cartItems"] as $session) {
     ON DUPLICATE KEY UPDATE ticketsQuantity = ticketsQuantity + $ticketsQuantity, insurance = insurance + $insurance
     ";
     $pdo->exec($query);
+
+    $query2 = "DELETE FROM Reservation WHERE ticketsQuantity = " . 0;
+    $pdo->exec($query2);
 }
  
 unset($_SESSION["cartItems"]);
