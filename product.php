@@ -74,7 +74,7 @@ $sessions = $statement->fetchAll();
                 <td><?php echo $session['venue']; ?></td>
                 <td><?php echo $session['price']; ?>€</td>
                 <?php if ($currentDate >= $session['date']) { ?>
-                    <td>Cet événement est passé</td>
+                    <td><span class="alert-message">Cet événement est passé</span></td>
                 <?php } else { ?>
                     <td>
                         <form method="post" action="cart.php" name="cart">

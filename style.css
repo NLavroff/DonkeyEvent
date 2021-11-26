@@ -251,6 +251,10 @@ header .overlay {
   border-radius: 0%;
 }
 
+.alert-message {
+  color: #be3333;
+}
+
 @media (max-width: 600px) {
   .space {
     margin: 30px;
