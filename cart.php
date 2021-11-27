@@ -66,7 +66,7 @@ if (isset($_SESSION['cartItems'])) { ?>
                                 <?php 
                                 foreach ($_SESSION['cartItems'] as $session => $sessionDetails) {
                                     $query = "SELECT capacity, Event.name as event, Genre.name as genre, Artist.name as artist, Venue.name as venue, City.name as city, date, price, idSession 
-                                    FROM Session 
+                                    FROM Session
                                     JOIN Event ON Event_idEvent = idEvent JOIN Venue ON Venue_idVenue = idVenue JOIN City ON City_idCity = idCity JOIN Performance ON Performance.Event_idEvent = idEvent JOIN Artist ON Artist_idArtist = idArtist JOIN Genre ON Genre_idGenre = idGenre 
                                     WHERE idSession =" . $sessionDetails["session"];
                                     $statement = $pdo->query($query);
@@ -83,8 +83,10 @@ if (isset($_SESSION['cartItems'])) { ?>
                                                 <form action="refreshCart.php" method="get">
                                                     <input type="hidden" name="idSession" value="<?php echo $sessionDetails["session"]; ?>" />
                                                     <td><div class="form-group form-check">
-                                                        <input type="checkbox" name="insurance" value="TRUE" class="form-check-input" id="exampleCheck1" 
-                                                        <?php if ($sessionDetails["insurance"] == TRUE || $_POST["insurance"] == TRUE) { ?>
+                                                        <input type="checkbox" name="provisionalInsurance" value="TRUE" class="form-check-input" id="exampleCheck1" 
+                                                        <?php if (isset($sessionDetails["provisionalInsurance"]) && $sessionDetails["provisionalInsurance"] == TRUE) { ?>
+                                                            checked
+                                                        <?php } else if ($sessionDetails["insurance"] == TRUE) { ?>
                                                             checked disabled>
                                                             <input type="hidden" name="insurance" value="TRUE"
                                                         <?php } ?>>
@@ -110,7 +112,7 @@ if (isset($_SESSION['cartItems'])) { ?>
                                                 </td>
                                                 <?php
                                                 $total += $sessionDetails["nbTickets"]*$sessionInfo[$i]['price'];
-                                                if ($sessionDetails["insurance"] && 0<$sessionDetails["nbTickets"]) {
+                                                if (isset($sessionDetails["provisionalInsurance"]) && $sessionDetails["provisionalInsurance"] && 0<$sessionDetails["nbTickets"]) {
                                                     $total += $insurancePrice;
                                                 }
                                                 ?>
