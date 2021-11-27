@@ -26,8 +26,48 @@ tr:nth-child(even) {
 }
 </style>
 
-<!-- A simple form to know what the user is looking for -->
+
+<!-- A simple form to know what the user is looking for 
 <h1>Recherche</h1>
+<form action="searchResult.php" method="get" autocomplete="on">
+    <label for="search">Je souhaite réserver : </label>
+    <input type="text" name="search" placeholder="Artiste/Salle/Ville" value="<?php if (isset($_GET["search"])) { echo $_GET["search"]; } ?>">
+    <label for="searchDate">le : </label>
+    <input type="date" name="searchDate" value=<?php if (isset($_GET["searchDate"])) { echo $_GET["searchDate"]; } ?>>
+    <label for="searchPrice">Prix maximum par place : </label>
+    <select name="searchPrice">
+      <option value=100>100 €</option>
+      <option value=50>50 €</option>
+      <option value=20>20 €</option>
+      <option value=5>5 €</option>
+    </select>
+    <input type="submit" value="Rechercher"><br><br>
+</form>
+
+-->
+
+<!-- DEBUT DU TEST 1 -->
+
+<p>DEBUT</p>
+
+<div class="row g-3 align-items-center">
+  <div class="col-auto">
+    <label for="inputPassword6" class="col-form-label">Je souhaite réserver : </label>
+  </div>
+  <div class="col-lg-8">
+    <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+  </div>
+  <div class="col-auto">
+    <label for="inputPassword6" class="col-form-label">Je souhaite réserver : </label>
+  </div>
+  <div class="col-auto">
+    <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+  </div>
+</div>
+
+<!-- DEBUT DU TEST 2 -->
+
+
 <form action="searchResult.php" method="get" autocomplete="on">
     <label for="search">Je souhaite réserver : </label>
     <input type="text" name="search" placeholder="Artiste/Salle/Ville" value="<?php if (isset($_GET["search"])) { echo $_GET["search"]; } ?>">
