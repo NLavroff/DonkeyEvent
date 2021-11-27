@@ -106,16 +106,15 @@ if (isset($_POST['user_login'])){
           <li class="nav-item">
             <form class="d-flex">
               <?php if (!isset($_SESSION['user_login'])) { ?>
-                <button type='button' class="btn secondary-login" data-bs-toggle="modal" data-bs-target="#loginModal">Se connecter</button>
+                <button type='button' class="nav-link btn secondary-login" data-bs-toggle="modal" data-bs-target="#loginModal">Se connecter</button>
               <?php } else { ?>
                 <div class="dropdown">
-                  <button class="btn secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     Mon compte
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="reservation.php"><button type='button' class="btn secondary">Mes réservations</button></a></li>
-                    <div class="dropdown-divider"></div>
-                    <li><a class="dropdown-item" href="logout.php"><button type='button' class="btn secondary">Se déconnecter</button></a></li>
+                  </a>
+                  <ul class="dropdown-menu no-border dropdown-menu-lg-end" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item nav-link" href="reservation.php">Mes réservations</a></li>
+                    <li><a class="dropdown-item nav-link" href="logout.php">Se déconnecter</a></li>
                   </ul>
                 </div>
               <?php } ?>
