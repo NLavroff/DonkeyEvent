@@ -26,7 +26,7 @@ CREATE TABLE `Genre` (
   `idGenre` int NOT NULL AUTO_INCREMENT,
   `Name` varchar(45) NOT NULL,
   PRIMARY KEY (`idGenre`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `Genre` (
 
 LOCK TABLES `Genre` WRITE;
 /*!40000 ALTER TABLE `Genre` DISABLE KEYS */;
-INSERT INTO `Genre` VALUES (1,'movie'),(2,'theatre'),(3,'exhibit'),(4,'concert'),(5,'stand up');
+INSERT INTO `Genre` VALUES (1,'movie'),(2,'theatre'),(3,'exhibit'),(4,'concert'),(5,'stand up'),(6,'dance');
 /*!40000 ALTER TABLE `Genre` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-22 17:43:47
+-- Dump completed on 2021-11-27 12:18:59
