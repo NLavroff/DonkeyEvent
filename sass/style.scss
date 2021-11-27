@@ -114,7 +114,7 @@ a {
     border-color: $links-color;
     font-size: 12px;    
     border-radius: 0%;
-    margin-top: 10px;
+    margin: 10px;
 }
 
 .btn-light:hover {
@@ -144,6 +144,10 @@ a {
 
 .form-control.border-end-0.border {
     height : 40px;
+}
+
+.form-control-sm {
+    border-radius: 0%;
 }
 
 .fa.fa-search { // icon search
@@ -310,7 +314,7 @@ header .overlay {
     font-size: 50px;
 }
 
-.table {
+.table, .research {
     background-color: #F8F9FA;
     padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 18px;
@@ -343,6 +347,11 @@ thead  {
     margin-left: 50px;
 }
 
+.research {
+    background-color: $links-color;
+    padding: 5px;
+}
+
 @media (max-width: 600px) {
     
     .space {
@@ -357,4 +366,5 @@ thead  {
     .event {
         margin : auto;
     }
+
 }
