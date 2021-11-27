@@ -20,7 +20,7 @@ $idUser = $user['idUser'];
 foreach ($_SESSION["cartItems"] as $session) {
     $idSession = $session["session"];
     $ticketsQuantity = $session["nbTickets"];
-    if ($session["insurance"] == TRUE) {
+    if ($session["provisionalInsurance"] == TRUE) {
         $insurance = 1;
     } else {
         $insurance = 0;
