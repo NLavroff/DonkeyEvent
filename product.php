@@ -70,7 +70,7 @@ $sessions = $statement->fetchAll();
         <tr>
             <?php
             foreach ($sessions as $session) { ?>
-                <th scope="row"><?php echo $session['event']; ?></td>
+                <th scope="row"><?php echo $session['event']; ?></th>
                 <td><?php setlocale(LC_ALL, 'fr_FR'); echo date('j/m/Y  - H:i', strtotime($session['date'])); ?></td>
                 <td><?php echo $session['city']; ?></td>
                 <td><?php echo $session['venue']; ?></td>

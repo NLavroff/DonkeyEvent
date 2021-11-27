@@ -73,7 +73,7 @@ $currentDate = date("Y-m-d H:i:s");
                                     </select>
                                     <input type="hidden" name="insurance" value="TRUE" />
                                     <input type="hidden" name="idSession" value="<?php echo $reservation["idSession"]; ?>" />
-                                    <button type="submit">Modifier</button>
+                                    <button type="submit" class="btn btn-light">Modifier</button>
                                 </form>
                             </td>
                             <td>
@@ -82,7 +82,7 @@ $currentDate = date("Y-m-d H:i:s");
                                     <input type="hidden" name="cancellation" value="TRUE" />
                                     <input type="hidden" name="nbTickets" value="<?php echo -$reservation['ticketsQuantity']; ?>" />
                                     <input type="hidden" name="idSession" value="<?php echo $reservation["idSession"]; ?>" />
-                                    <button type="submit"><span class="alert-message">Annuler cette réservation</span></button>
+                                    <button type="submit" class="btn btn-light"><span class="alert-message">Annuler cette réservation</span></button>
                                 </form>
                             </td>
                         <?php } ?>
