@@ -232,6 +232,15 @@ a {
   margin-right: 20px;
 }
 
+.no-border {
+  border: 0;
+}
+
+.dropdown-menu {
+  font-size: 14px;
+  background-color: #F8F9FA;
+}
+
 header {
   position: relative;
   background-color: black;
