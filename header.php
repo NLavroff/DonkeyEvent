@@ -134,8 +134,8 @@ if (isset($_POST['user_login'])){
 <!-- Modal -->
   <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content ">
-        <div class="modal-header">
+      <div class="modal-content">
+        <div class="modal-header ">
           <h2 class="modal-title" id="exampleModalLabel">DonkeyEvent</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
