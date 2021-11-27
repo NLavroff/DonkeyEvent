@@ -68,7 +68,14 @@ $events = $statement->fetchAll();
                   <img src="medias/theatre.jpg" alt="theatre" class="w-60 img-fluid">
                   <h2 class="genre">THÉÂTRE</h2>
                   </a>
-          </div>        
+          </div>
+          
+          <div class="container img-genre text-center">
+                  <a href="standup.php">
+                  <img src="https://images.pexels.com/photos/892080/pexels-photo-892080.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="standup" class="w-60 img-fluid" width=800px height=600px>
+                  <h2 class="genre">STAND UPS</h2>
+                  </a>
+          </div>    
       </div>
 
 

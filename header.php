@@ -66,7 +66,11 @@ if (isset($_POST['user_login'])){
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="theater.php">Théâtre</a>
+            <a class="nav-link" href="exhibit.php">Expositions</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="concert.php">Concerts</a>
           </li>
 
           <li class="nav-item">
@@ -74,17 +78,14 @@ if (isset($_POST['user_login'])){
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="exhibit.php">Expos</a>
+            <a class="nav-link" href="theater.php">Théâtre</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="concert.php">Concert</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="standup.php">Stand Up</a>
+            <a class="nav-link" href="standup.php">Stand Ups</a>
           </li>
         </ul>
+
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <form action="searchResult.php" method="GET" autocomplete="on">
