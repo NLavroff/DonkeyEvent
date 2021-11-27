@@ -38,7 +38,9 @@ if (!empty($_POST)) {
     ];
 } ?>
 
-<h1>Mon panier</h1>
+<div class="p-5 text-center" style="background-color: #0D0C1D;">
+    <h1 class="mb-3">MON PANIER</h1>
+</div>
 
 <?php
 if (isset($_SESSION['cartItems'])) { ?>
