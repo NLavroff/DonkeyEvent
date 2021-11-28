@@ -312,8 +312,12 @@ header .overlay {
 
 thead  {
     color : $secundary-color;
+    text-align: center;
 }
 
+td {
+    text-align: center;
+}
 .form-select {
     justify-content: center;
     background-color: $secundary-color;

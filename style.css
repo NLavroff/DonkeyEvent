@@ -302,6 +302,11 @@ header .overlay {
 
 thead {
   color: #F1DAC4;
+  text-align: center;
+}
+
+td {
+  text-align: center;
 }
 
 .form-select {
