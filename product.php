@@ -63,6 +63,7 @@ $sessions = $statement->fetchAll();
             <th scope="col">Ville</th>
             <th scope="col">Salle</th>
             <th scope="col">Tarif</th>
+            <th scope="col">Nombre de places</th>
             <th scope="col">Réserver</th>
         </tr>
     </thead>
@@ -80,14 +81,15 @@ $sessions = $statement->fetchAll();
                 <?php } else { ?>
                     <td>
                         <form method="post" action="cart.php" name="cart">
-                            <label for="nbTickets">Nombre de places : </label>
-                            <select name="nbTickets" class="form-select" >
+                            <select name="nbTickets" class="form-select nbTickets" >
                                 <?php
                                 $capacity = (int) $session['capacity'];
                                 for ($i = 1; $i <= $capacity && $i <= 10; $i++) { ?>
                                     <option value=<?php echo $i ?>><?php echo $i ?></option>
                                 <?php } ?>
                             </select>
+                                </td>
+                                <td>
                             <input type="hidden" name="idSession" value="<?php echo $session["idSession"]; ?>" />
                             <button type="submit" class="btn btn-light">Ajouter au panier</button>
                         </form>
