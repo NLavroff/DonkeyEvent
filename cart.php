@@ -71,54 +71,57 @@ if (isset($_SESSION['cartItems'])) { ?>
                                 $statement = $pdo->query($query);
                                 $sessionInfo = $statement->fetchAll(PDO::FETCH_ASSOC);
                                 for ($i = 0; $i < count($sessionInfo); $i++) { ?>
-                        <tbody>
-                            <tr>
-                                <td><?php echo $sessionInfo[$i]['event']; ?></td>
-                                <td><?php echo $sessionInfo[$i]['genre']; ?></td>
-                                <td><?php echo $sessionInfo[$i]['date']; ?></td>
-                                <td><?php echo $sessionInfo[$i]['city']; ?></td>
-                                <td><?php echo $sessionInfo[$i]['venue']; ?></td>
-                                <td>
-                                    <div class="price-wrap"><var class="price"><?php echo $sessionInfo[$i]['price'] . '€'; ?></var></div>
-                                </td>
-                                <form action="refreshCart.php" method="get">
-                                    <input type="hidden" name="idSession" value="<?php echo $sessionDetails["session"]; ?>" />
-                                    <td>
-                                        <div class="form-group form-check">
-                                            <input type="checkbox" name="insurance" value="TRUE" class="form-check-input" id="exampleCheck1" <?php if ($sessionDetails["insurance"] == TRUE || $_POST["insurance"] == TRUE) { ?> checked disabled>
-                                            <input type="hidden" name="insurance" value="TRUE" <?php } ?>>
-                                        </div>
-                                    </td>
-                                    <td><select class="form-select" name="nbTickets">
-                                            <?php
-                                            if ($sessionDetails["nbTickets"] <= 0) { ?>
-                                                <option selected="selected" value=<?php echo $sessionDetails["nbTickets"] ?>><?php echo $sessionDetails["nbTickets"] ?></option>
-                                                <?php } else {
-                                                $capacity = (int) $sessionInfo[$i]['capacity'];
-                                                for ($j = 1; $j <= $capacity && $j <= 10; $j++) { ?>
-                                                    <option <?php if ($sessionDetails["nbTickets"] == $j) { ?> selected="selected" <?php } ?> value=<?php echo $j ?>><?php echo $j ?></option>
-                                            <?php }
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo $sessionInfo[$i]['event']; ?></td>
+                                            <td><?php echo $sessionInfo[$i]['genre']; ?></td>
+                                            <td><?php echo $sessionInfo[$i]['date']; ?></td>
+                                            <td><?php echo $sessionInfo[$i]['city']; ?></td>
+                                            <td><?php echo $sessionInfo[$i]['venue']; ?></td>
+                                            <td>
+                                                <div class="price-wrap"><var class="price"><?php echo $sessionInfo[$i]['price'] . '€'; ?></var></div>
+                                            </td>
+                                            <form action="refreshCart.php" method="get">
+                                                <input type="hidden" name="idSession" value="<?php echo $sessionDetails["session"]; ?>" />
+                                                <td>
+                                                    <div class="form-group form-check">
+                                                        <input type="checkbox" name="provisionalInsurance" value="TRUE" class="form-check-input" id="exampleCheck1" 
+                                                        <?php if (isset($sessionDetails["provisionalInsurance"]) && $sessionDetails["provisionalInsurance"] == TRUE) { ?>
+                                                            checked
+                                                        <?php } else if ($sessionDetails["insurance"] == TRUE) { ?>
+                                                            checked disabled>
+                                                            <input type="hidden" name="insurance" value="TRUE"
+                                                        <?php } ?>>
+                                                    </div>
+                                                </td>
+                                                <td><select class="form-select" name="nbTickets">
+                                                    <?php
+                                                    if ($sessionDetails["nbTickets"] <= 0) { ?>
+                                                        <option selected="selected" value=<?php echo $sessionDetails["nbTickets"] ?>><?php echo $sessionDetails["nbTickets"] ?></option>
+                                                    <?php } else {
+                                                        $capacity = (int) $sessionInfo[$i]['capacity'];
+                                                        for ($j = 1; $j <= $capacity && $j <= 10; $j++) { ?>
+                                                            <option <?php if ($sessionDetails["nbTickets"] == $j) { ?> selected="selected" <?php } ?> value=<?php echo $j ?>><?php echo $j ?></option>
+                                                        <?php }
+                                                    } ?>
+                                                </select></td>
+                                                <td><button class="btn btn-primary btn-sm btn-round" data-abc="true" type="submit">Valider</button></td>
+                                            </form>
+                                            <td class="text-right d-none d-md-block">
+                                                <form action="deleteFromCart.php" method="get">
+                                                    <input type="hidden" name="idSession" value="<?php echo $sessionDetails["session"]; ?>" />
+                                                    <button class="btn btn-danger btn-sm btn-round" data-abc="true" type="submit" name="cancellation" value="TRUE">Retirer</button>
+                                                </form>
+                                            </td>
+                                            <?php $total += $sessionDetails["nbTickets"] * $sessionInfo[$i]['price'];
+                                            if (isset($sessionDetails["provisionalInsurance"]) && $sessionDetails["provisionalInsurance"] && 0 < $sessionDetails["nbTickets"]) {
+                                                $total += $insurancePrice;
                                             } ?>
-                                        </select></td>
-                                    <td><button class="btn btn-primary btn-sm btn-round" data-abc="true" type="submit">Valider</button></td>
-                                </form>
-                                <td class="text-right d-none d-md-block">
-                                    <form action="deleteFromCart.php" method="get">
-                                        <input type="hidden" name="idSession" value="<?php echo $sessionDetails["session"]; ?>" />
-                                        <button class="btn btn-danger btn-sm btn-round" data-abc="true" type="submit" name="cancellation" value="TRUE">Retirer</button>
-                                    </form>
-                                </td>
-                                <?php
-                                    $total += $sessionDetails["nbTickets"] * $sessionInfo[$i]['price'];
-                                    if ($sessionDetails["insurance"] && 0 < $sessionDetails["nbTickets"]) {
-                                        $total += $insurancePrice;
-                                    }
-                                ?>
-                            </tr>
-                        </tbody>
-                    <?php } ?>
-                <?php } ?>
-                </thead>
+                                        </tr>
+                                    </tbody>
+                                <?php } ?>
+                            <?php } ?>
+                        </thead>
                     </table>
                 </div>
             </aside>
@@ -144,11 +147,14 @@ if (isset($_SESSION['cartItems'])) { ?>
                     </div>
                 </div>
                 <div class="card">
-            <div class="card-body">
-                <h4>Assurance Annulation en option</h4>
-                <p>Au cours de de votre commande de billets, il vous est proposé de souscrire à l'assurance annulation spectacle afin d'être couverts en cas d'imprévus si vous ne pouvez pas assister au spectacle. 
-                    Il vous suffit de la cocher pour être immédiatement couvert à partir du jour d’achat de votre billet et de l’assurance.</p>
-            </div>
+                    <div class="card-body">
+                        <h4>Assurance Annulation en option</h4>
+                        <p>Au cours de de votre commande de billets, il vous est proposé de souscrire à l'assurance annulation spectacle afin d'être couverts en cas d'imprévus si vous ne pouvez pas assister au spectacle. 
+                            Il vous suffit de la cocher pour être immédiatement couvert à partir du jour d’achat de votre billet et de l’assurance.
+                        </p>
+                    </div>
+                </div>
+            </aside>
         </div>
     </div>
 <?php }

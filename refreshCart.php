@@ -5,6 +5,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
 $updatedSession = $_GET["idSession"];
 $_SESSION["cartItems"][$updatedSession]["nbTickets"] = $_GET["nbTickets"];
-$_SESSION["cartItems"][$updatedSession]["insurance"] = $_GET["insurance"];
+$_SESSION["cartItems"][$updatedSession]["provisionalInsurance"] = $_GET["provisionalInsurance"];
 
 header ('location: cart.php');
