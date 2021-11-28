@@ -24,29 +24,11 @@ body {
     padding: 1.40rem
 }
 
-.img-sm {
-    width: 80px;
-    height: 80px
-}
-
 .itemside .info {
     padding-left: 15px;
     padding-right: 7px
 }
 
-.table-shopping-cart .price-wrap {
-    line-height: 1.2
-}
-
-.table-shopping-cart .price {
-    font-weight: bold;
-    margin-right: 5px;
-    display: block
-}
-
-.text-muted {
-    color: $links-color !important
-}
 
 a {
     text-decoration: none !important
@@ -60,10 +42,16 @@ a {
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color:$bg-color;
+    background-color:#F8F9FA;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, .125);
-    border-radius: 0px
+    border-radius: 0px;
+    color:$bg-color;
+    margin-bottom: 20px;
+}
+
+.p-5 {
+    margin-bottom: 40px;;
 }
 
 .itemside {
@@ -71,35 +59,32 @@ a {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 100%
+    width: 100%;
 }
 
 .dlist-align {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex
+    display: flex;
+    justify-content: space-between;
 }
 
 [class*="dlist-"] {
     margin-bottom: 5px
 }
 
-.coupon {
-    border-radius: 1px
-}
-
 .price {
     font-weight: 600;
-    color: #212529
+    color: $primary-color;
 }
 
 .btn.btn-out {
     outline: 1px solid #fff;
-    outline-offset: -5px
+    outline-offset: -5px;
 }
 
 .btn-main {
-    border-radius: 2px;
+    border-radius: 0%;
     text-transform: capitalize;
     font-size: 15px;
     padding: 10px 19px;
@@ -146,8 +131,9 @@ a {
     height : 40px;
 }
 
-.form-control-sm {
+.form-control-sm, .btn-primary, .btn-danger {
     border-radius: 0%;
+    justify-content: center;
 }
 
 .fa.fa-search { // icon search
@@ -329,7 +315,7 @@ thead  {
 }
 
 .form-select {
-    width : 123px;
+    justify-content: center;
     background-color: $secundary-color;
     border-radius: 0%;
 }
@@ -366,5 +352,5 @@ thead  {
     .event {
         margin : auto;
     }
-
+    
 }
