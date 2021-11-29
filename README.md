@@ -1,3 +1,58 @@
+GIT
+
+To download the very latest source off the GIT server do this :
+
+git clone git@github.com:Nathboule/DonkeyEvent.git
+
+(you'll get a directory named DonkeyEvent created, filled with the source code)
+
+CREATE DATABASE
+
+Open Shell and launch command :
+
+mysql -u root
+
+Launch commands :
+
+CREATE DATABASE donkey_event_db;
+
+USE donkey_event_db;
+
+IMPORT DATABASE
+
+Open Workbench
+
+Go to Administration
+
+Click on Data Import
+
+Select dumps folder in Donkey Event
+
+Click on donkey_event_db
+
+Star Import
+
+LAUNCH WEBSITE
+
+Open Shell and launch command :
+
+php -S localhost:8000
+
+LOGIN TO SESSION
+
+Click on "Se connecter"
+
+Fill user field : 
+Guest
+
+Fill password field : 
+1234
+
+Click on "Connexion"
+
+ENJOY YOUR NAVIGATION !
+
+-------------------------------------------------------
 # DonkeyEvent
 
 Projet PHP - JS
