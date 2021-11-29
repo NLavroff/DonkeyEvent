@@ -28,7 +28,7 @@ CREATE TABLE `User` (
   `Password` varchar(255) DEFAULT NULL,
   `Email` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES (1,'Nathalie','$2y$10$qMTc7sKBX73LsxsemdrY0e2yj4EIpimbf6EcC0mnarXWVQqYzaYuK','nathalielavroff@gmail.com'),(2,'Jonathan','$2y$10$HchrW7w0gUbrYE3q1wU6eOX33GnkPVxQ26ek9yKUIxTaPE4GzfEBO','jonathan.demay004@gmail.com'),(3,'Aloïs','$2y$10$ikz3uT.E7tZ/i.W3No886uWrD06wdje/jwwB45rqC5zm8.ik5fray','alois.delaune@hotmail.fr');
+INSERT INTO `User` VALUES (1,'Nathalie','$2y$10$qMTc7sKBX73LsxsemdrY0e2yj4EIpimbf6EcC0mnarXWVQqYzaYuK','nathalielavroff@gmail.com'),(2,'Jonathan','$2y$10$HchrW7w0gUbrYE3q1wU6eOX33GnkPVxQ26ek9yKUIxTaPE4GzfEBO','jonathan.demay004@gmail.com'),(3,'Aloïs','$2y$10$ikz3uT.E7tZ/i.W3No886uWrD06wdje/jwwB45rqC5zm8.ik5fray','alois.delaune@hotmail.fr'),(4,'Guest','$2y$10$08A1OsIDZNCo6M53cklxSulXoshxhr1gXFhvkBHmkBO4yJfwsNpWi',NULL);
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-22 17:43:47
+-- Dump completed on 2021-11-29 17:50:18
